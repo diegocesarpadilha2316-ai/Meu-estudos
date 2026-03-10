@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+  <meta name="theme-color" content="#050816" />
+  <title>DIEGO ULTRA V14 | PRO SELECT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#050816;
+      --bg2:#0b1024;
+      --card:rgba(14,19,42,.76);
+      --card-2:rgba(9,14,31,.86);
+      --line:rgba(255,255,255,.09);
+      --text:#eef2ff;
+      --muted:#94a3b8;
+      --accent:#6366f1;
+      --accent-2:#22d3ee;
+      --ok:#10b981;
+      --bad:#ef4444;
+      --gold:#f59e0b;
+      --shadow:0 14px 40px rgba(0,0,0,.32);
+      --radius:22px;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;font-family:'Plus Jakarta Sans',sans-serif}
+    html,body{margin:0;min-height:100%;background:
+      radial-gradient(circle at top,#171a4d 0%,rgba(23,26,77,0) 35%),
+      radial-gradient(circle at 100% 0,#0f5f78 0%,rgba(15,95,120,0) 18%),
+      linear-gradient(180deg,var(--bg2),var(--bg));color:var(--text)}
+    body{padding-bottom:120px}
+    header{position:sticky;top:0;z-index:2000;background:rgba(5,8,22,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .head-wrap{max-width:1100px;margin:0 auto;padding:16px}
+    .head-top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:12px}
+    .brand{font-weight:900;font-size:1.18rem;letter-spacing:.02em}
+    .brand span{color:var(--accent);text-shadow:0 0 16px rgba(99,102,241,.45)}
+    .summary-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-size:.78rem;font-weight:800;color:#dbeafe;white-space:nowrap}
+    .nav{display:flex;gap:10px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+    .nav::-webkit-scrollbar{display:none}
+    .nav button{border:none;background:transparent}
+    .tab{padding:11px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);font-weight:800;font-size:.78rem;white-space:nowrap;cursor:pointer;transition:.2s}
+    .tab.active{background:linear-gradient(135deg,var(--accent),#4f46e5);color:#fff;border-color:transparent;box-shadow:0 10px 30px rgba(99,102,241,.34);transform:translateY(-1px)}
+    .container{max-width:1100px;margin:0 auto;padding:18px}
+    .grid{display:grid;gap:16px}
+    .grid-2{grid-template-columns:1.2fr .8fr}
+    .card{background:var(--card);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .card.soft{background:var(--card-2)}
+    .section-title{font-size:.76rem;font-weight:900;color:var(--accent-2);text-transform:uppercase;letter-spacing:.08em;margin:0 0 12px}
+    .headline{font-size:1.15rem;font-weight:900;margin:0 0 6px}
+    .subtext{color:var(--muted);font-size:.92rem;line-height:1.6}
+    .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+    .kpi{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;padding:14px;text-align:center}
+    .kpi b{display:block;font-size:1.3rem}
+    .kpi span{font-size:.8rem;color:var(--muted)}
+    label{display:block;font-size:.76rem;font-weight:900;color:#c7d2fe;text-transform:uppercase;letter-spacing:.06em;margin:14px 0 7px}
+    select,input[type="text"],input[type="number"],input[type="file"],textarea{width:100%;padding:14px 15px;border-radius:16px;border:1px solid var(--line);background:rgba(3,7,18,.55);color:#fff;font-weight:700}
+    textarea{min-height:240px;resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .row > *{flex:1 1 180px}
+    .btn{width:100%;border:none;border-radius:16px;padding:15px 16px;font-weight:900;cursor:pointer;transition:.18s;letter-spacing:.01em}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-main{background:linear-gradient(135deg,var(--accent),#4f46e5);color:#fff;box-shadow:0 10px 28px rgba(99,102,241,.28)}
+    .btn-dark{background:rgba(255,255,255,.04);color:#fff;border:1px solid var(--line)}
+    .btn-gold{background:linear-gradient(135deg,#f59e0b,#f97316);color:#160b02;box-shadow:0 10px 28px rgba(245,158,11,.22)}
+    .btn-red{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;box-shadow:0 10px 28px rgba(239,68,68,.22)}
+    .hero{display:grid;grid-template-columns:1.3fr .7fr;gap:16px;align-items:stretch}
+    .hero-box{padding:20px;border-radius:22px;background:linear-gradient(180deg,rgba(99,102,241,.15),rgba(34,211,238,.06));border:1px solid rgba(255,255,255,.08)}
+    .hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;border:1px solid var(--line);font-size:.74rem;font-weight:900;background:rgba(255,255,255,.04)}
+    .pill.ok{color:#86efac;border-color:rgba(16,185,129,.35)}
+    .pill.bad{color:#fca5a5;border-color:rgba(239,68,68,.35)}
+    .pill.gold{color:#fde68a;border-color:rgba(245,158,11,.35)}
+    .pill.blue{color:#a5f3fc;border-color:rgba(34,211,238,.35)}
+    .hidden{display:none!important}
+    .dropzone{border:2px dashed rgba(99,102,241,.5);padding:18px;border-radius:18px;background:rgba(99,102,241,.06);text-align:center;color:#c7d2fe}
+    .question-shell{display:grid;gap:14px}
+    .sticky-question{position:sticky;top:112px;z-index:1000;border-radius:20px;padding:18px;background:linear-gradient(180deg,rgba(17,24,39,.92),rgba(8,11,24,.98));border:1px solid var(--line);box-shadow:var(--shadow)}
+    .question-path{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+    .question-title{font-size:1.06rem;font-weight:900;line-height:1.55;white-space:pre-wrap}
+    .timer{padding:8px 12px;border-radius:999px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.4);font-weight:900;color:#c7d2fe;font-size:.78rem}
+    .progress{height:8px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);overflow:hidden}
+    .progress > span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;transition:.3s}
+    .option{padding:16px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-weight:700;cursor:pointer;transition:.16s;line-height:1.55}
+    .option:hover{border-color:rgba(99,102,241,.35);background:rgba(99,102,241,.05)}
+    .option.correct{border-color:rgba(16,185,129,.7)!important;background:rgba(16,185,129,.12)!important;color:#86efac}
+    .option.wrong{border-color:rgba(239,68,68,.7)!important;background:rgba(239,68,68,.12)!important;color:#fecaca}
+    .info-box,.comment-box,.memo-box,.warn-box{padding:14px 15px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03);line-height:1.7}
+    .info-box{border-left:4px solid var(--accent)}
+    .comment-box{border-left:4px solid var(--ok)}
+    .memo-box{border-left:4px solid var(--gold);color:#fde68a;background:rgba(245,158,11,.08)}
+    .warn-box{border-left:4px solid var(--bad);color:#fecaca;background:rgba(239,68,68,.08)}
+    .list{display:grid;gap:10px}
+    .list-card{padding:14px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+    .list-card h4{margin:0 0 6px;font-size:.96rem}
+.lesson-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}
+.lesson-list{display:grid;gap:10px;max-height:70vh;overflow:auto;padding-right:4px}
+.lesson-item{padding:14px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.03);cursor:pointer;transition:.16s}
+.lesson-item:hover,.lesson-item.active{border-color:rgba(99,102,241,.45);background:rgba(99,102,241,.08)}
+.lesson-viewer{display:grid;gap:12px}
+.lesson-empty{padding:18px;border-radius:18px;border:1px dashed var(--line);color:var(--muted);background:rgba(255,255,255,.02)}
+.lesson-form textarea{min-height:140px;font-family:'Plus Jakarta Sans',sans-serif}
+.lesson-json{min-height:220px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.lesson-paper{max-width:920px;margin:0 auto;background:#ffffff;color:#111827;border-radius:22px;padding:28px;box-shadow:0 18px 40px rgba(0,0,0,.28);border:1px solid rgba(15,23,42,.08)}
+.lesson-paper-header{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid rgba(15,23,42,.1)}
+.lesson-paper-header h2{margin:0 0 8px;font-size:1.8rem;line-height:1.2}
+.lesson-paper-header p{margin:0;color:#475569;line-height:1.6}
+.lesson-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.lesson-meta .tag{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;background:#eef2ff;color:#3730a3;font-size:.74rem;font-weight:800}
+.lesson-paper-section{margin:0 0 20px;line-height:1.75}
+.lesson-paper-section h3{margin:0 0 8px;font-size:1.08rem;color:#0f172a}
+.lesson-paper-section p{margin:0;color:#1f2937;white-space:pre-wrap}
+.lesson-paper-callout{margin:0 0 20px;padding:16px 18px;border-left:5px solid #6366f1;background:#f5f3ff;border-radius:14px;color:#312e81}
+.lesson-paper-callout h3{margin:0 0 8px;font-size:1rem}
+.lesson-paper-list{margin:0;padding-left:20px;color:#1f2937}
+.lesson-paper-list li{margin:0 0 8px}
+.lesson-paper-divider{height:1px;background:rgba(15,23,42,.12);margin:22px 0}
+.long-text-box{max-height:260px;overflow:auto;padding-right:6px}
+.long-text-box.longer{max-height:340px}
+.question-title.long-question{max-height:220px;overflow:auto;padding-right:6px;border-radius:14px}
+.selection-box{padding:12px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.selection-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.selection-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(99,102,241,.08);font-size:.75rem;font-weight:800}
+.selection-chip button{border:none;background:transparent;color:#fecaca;font-weight:900;cursor:pointer}
+    .muted{color:var(--muted)}
+    .small{font-size:.86rem;line-height:1.6}
+    .toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);z-index:5000;background:rgba(8,12,24,.96);border:1px solid var(--line);padding:10px 14px;border-radius:999px;font-weight:900;display:none;box-shadow:var(--shadow)}
+
+    .study-setup.hidden-while-session{display:none!important}
+    .session-mode #studyArea{max-width:820px;margin:0 auto}
+    .session-mode .container{max-width:980px}
+    .session-mode #studyArea .question-shell{gap:12px}
+    .session-card{background:linear-gradient(180deg,rgba(9,14,31,.98),rgba(6,9,20,.98));border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
+    .question-panel{padding:18px 18px 10px}
+    .options-panel{padding:0 18px 18px}
+    .feedback-panel{padding:0 18px 18px}
+    .action-bar{position:sticky;bottom:12px;z-index:1500;padding:14px 18px 18px;background:linear-gradient(180deg,rgba(5,8,22,0),rgba(5,8,22,.9) 20%,rgba(5,8,22,.98) 100%)}
+    .action-bar .row{flex-wrap:nowrap}
+    .result-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+    .result-box{padding:16px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.03);text-align:center}
+    .result-box b{display:block;font-size:1.35rem}
+    .result-box span{font-size:.82rem;color:var(--muted)}
+    @media(max-width:640px){.action-bar .row{flex-wrap:wrap}.result-grid{grid-template-columns:1fr 1fr}.question-panel,.options-panel,.feedback-panel{padding-left:14px;padding-right:14px}.action-bar{padding-left:14px;padding-right:14px;bottom:8px}}
+    @media(max-width:900px){.grid-2,.hero,.lesson-layout{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:640px){.container{padding:14px}.head-top{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:1fr 1fr}.sticky-question{top:102px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="head-wrap">
+    <div class="head-top">
+      <div class="brand">DIEGO <span>ULTRA V14</span> • PRO SELECT</div>
+      <div class="summary-pill" id="topSummary">0 assuntos • 0 questões • 0 erradas</div>
+    </div>
+    <div class="nav">
+      <button class="tab active" data-tab="estudo" onclick="nav('estudo',event)">📚 ESTUDO</button>
+      <button class="tab" data-tab="revisao" onclick="nav('revisao',event)">🔄 REVISÃO</button>
+      <button class="tab" data-tab="dashboard" onclick="nav('dashboard',event)">📊 DASHBOARD</button>
+      <button class="tab" data-tab="aulas" onclick="nav('aulas',event)">🎓 AULAS</button>
+      <button class="tab" data-tab="config" onclick="nav('config',event)">⚙️ CONFIG</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section id="sec-estudo">
+    <div class="study-setup" id="studyHero">
+      <div class="card soft">
+        <div class="section-title">Resumo rápido</div>
+        <div class="kpis" style="grid-template-columns:1fr 1fr">
+          <div class="kpi"><b id="kpiAssuntos">0</b><span>Assuntos</span></div>
+          <div class="kpi"><b id="kpiQuestoes">0</b><span>Questões</span></div>
+          <div class="kpi"><b id="kpiResolvidas">0</b><span>Resolvidas</span></div>
+          <div class="kpi"><b id="kpiAproveitamento">0%</b><span>Aproveitamento</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-2 study-setup" id="studyFilters" style="margin-top:16px">
+      <div class="card">
+        <div class="section-title">Filtro de estudo</div>
+        <label>Matéria</label>
+        <select id="selMat" onchange="populateTopicos()"></select>
+        <label>Tópico / Subpasta</label>
+        <select id="selTopico" onchange="populateSubs()"></select>
+        <label>Assunto</label>
+        <select id="selSub" onchange="updateSelectedInfo()"></select>
+        <div class="row" style="margin-top:10px">
+          <button class="btn btn-dark" onclick="addSelection('mat')">ADICIONAR MATÉRIA</button>
+          <button class="btn btn-dark" onclick="addSelection('topico')">ADICIONAR TÓPICO</button>
+          <button class="btn btn-dark" onclick="addSelection('sub')">ADICIONAR ASSUNTO</button>
+        </div>
+        <div id="selectionQueue" style="margin-top:12px"></div>
+        <div class="row" style="margin-top:14px">
+          <button class="btn btn-main" onclick="startStudy('normal')">INICIAR TREINO</button>
+          <button class="btn btn-gold" onclick="startStudy('prioridade')">PRIORIZAR ERROS</button>
+          <button class="btn btn-dark" onclick="clearSelectionQueue()">LIMPAR FILA</button>
+        </div>
+      </div>
+      <div class="card soft" id="selectedInfoCard">
+        <div class="section-title">Preview do assunto</div>
+        <div id="selectedInfo" class="small muted">Importe um banco e selecione um assunto.</div>
+      </div>
+    </div>
+
+    <div id="studyArea" style="margin-top:16px"></div>
+  </section>
+
+  <section id="sec-revisao" class="hidden">
+    <div class="card">
+      <div class="section-title">Fila inteligente</div>
+      <h2 class="headline">Revisão dos erros</h2>
+      <div class="subtext">As questões que você erra ficam salvas e aparecem aqui até você consolidar o acerto. A meta é acertar 3 vezes para sair da fila.</div>
+      <div class="row" style="margin-top:16px">
+        <button class="btn btn-main" onclick="startReview()">REVISAR AGORA</button>
+        <button class="btn btn-dark" onclick="renderWrongList()">ATUALIZAR LISTA</button>
+      </div>
+    </div>
+    <div id="reviewArea" style="margin-top:16px"></div>
+    <div class="card" style="margin-top:16px">
+      <div class="section-title">Lista de erros</div>
+      <div id="wrongList" class="list"></div>
+    </div>
+  </section>
+
+  <section id="sec-dashboard" class="hidden">
+    <div class="card">
+      <div class="section-title">Desempenho</div>
+      <h2 class="headline">Dashboard do estudo</h2>
+      <div id="dashboardArea" class="list" style="margin-top:14px"></div>
+    </div>
+  </section>
+
+  <section id="sec-aulas" class="hidden">
+    <div class="card">
+      <div class="section-title">Módulo de aulas</div>
+      <h2 class="headline">Aulas em JSON com visual de apostila</h2>
+      <div class="subtext">Aqui você cola a aula em JSON, salva no assunto selecionado e o sistema renderiza em estilo apostila/PDF dentro do HTML. Não precisa usar PDF real.</div>
+    </div>
+    <div class="lesson-layout" style="margin-top:16px">
+      <div class="card soft">
+        <div class="section-title">Biblioteca</div>
+        <div id="lessonsList" class="lesson-list"></div>
+      </div>
+      <div class="card">
+        <div id="lessonViewer" class="lesson-viewer"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="section-title">Editar aula</div>
+      <div class="subtext">Cole aqui a aula em JSON. O sistema aceita título, subtítulo, meta e seções, e renderiza no formato de apostila.</div>
+      <div class="lesson-form">
+        <div class="row">
+          <div>
+            <label>Assunto vinculado</label>
+            <input id="lessonTarget" type="text" readonly />
+          </div>
+          <div>
+            <label>Título de apoio</label>
+            <input id="lessonTitle" type="text" placeholder="Ex.: Aula 01 - Poder Constituinte" />
+          </div>
+        </div>
+        <label>Resumo curto</label>
+        <textarea id="lessonSummary" placeholder="Opcional: texto rápido para aparecer na prévia e no card do assunto..."></textarea>
+        <label>JSON da aula</label>
+        <textarea id="lessonJson" class="lesson-json" placeholder='{"title":"Poder Constituinte","subtitle":"Resumo objetivo","sections":[{"type":"paragraph","title":"Conceito","content":"..."}]}'></textarea>
+        <div class="row" style="margin-top:14px">
+          <button class="btn btn-main" onclick="saveLessonFromForm()">SALVAR AULA</button>
+          <button class="btn btn-dark" onclick="openSelectedLesson()">ABRIR AULA DO ASSUNTO</button>
+          <button class="btn btn-red" onclick="deleteSelectedLesson()">EXCLUIR AULA</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec-config" class="hidden">
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="section-title">Importar banco</div>
+        <div class="dropzone" id="dropzone">Arraste e solte um arquivo JSON aqui</div>
+        <label>Enviar arquivo JSON</label>
+        <input id="jsonFile" type="file" accept=".json,application/json" />
+        <div class="row" style="margin-top:12px">
+          <button class="btn btn-main" onclick="importFile()">IMPORTAR ARQUIVO</button>
+          <button class="btn btn-dark" onclick="downloadBank()">BAIXAR BANCO</button>
+        </div>
+        <label>Ou cole o JSON</label>
+        <textarea id="jsonInput" placeholder="Cole o JSON aqui..."></textarea>
+        <div class="row" style="margin-top:12px">
+          <button class="btn btn-gold" onclick="mergeTextarea()">MESCLAR AO BANCO</button>
+          <button class="btn btn-red" onclick="replaceTextarea()">SUBSTITUIR BANCO</button>
+        </div>
+      </div>
+      <div class="card soft">
+        <div class="section-title">Ferramentas</div>
+        <div class="row">
+          <button class="btn btn-dark" onclick="copyBank()">COPIAR BANCO</button>
+          <button class="btn btn-dark" onclick="copyHistory()">COPIAR HISTÓRICO</button>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn btn-dark" onclick="backupBank()">CRIAR BACKUP LOCAL</button>
+          <button class="btn btn-dark" onclick="restoreBackup()">RESTAURAR BACKUP</button>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn btn-red" onclick="resetAll()">ZERAR TUDO</button>
+        </div>
+        <div class="warn-box" style="margin-top:16px"><b>Formato aceito:</b> continua compatível com o sistema Diego. Você pode importar em módulos (<code>mat/topico/sub/questoes</code>) ou no modelo com <code>BANK</code> e <code>LESSONS</code>.</div>
+        <div id="importPreview" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const LS_BANK='DIEGO_ULTRA_BANK_V14';
+const LS_BANK_OLD='DIEGO_ULTRA_BANK_V5';
+const LS_BACKUP='DIEGO_ULTRA_BANK_BACKUP_V14';
+const LS_STATE='DIEGO_ULTRA_STATE_V14';
+const LS_STATE_OLD='DIEGO_ULTRA_STATE_V5';
+const LS_LESSONS='DIEGO_ULTRA_LESSONS_V14';
+
+let BANK = loadBank();
+let STATE = loadState();
+let LESSONS = loadLessons();
+let SELECTED_KEYS = [];
+let CURRENT = { mode:null, queue:[], index:0, selected:null, shuffledOpts:[], shuffledAns:0, startTs:0, timerRef:null, answered:false, sessionStats:{total:0,correct:0,wrong:0} };
+
+function safeParse(raw,fallback){ try{return raw?JSON.parse(raw):fallback}catch(e){return fallback} }
+function norm(v){ return String(v ?? '').trim(); }
+function esc(v){ return String(v ?? '').replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m])); }
+function fmt(v){ return esc(v).replace(/\n/g,'<br>'); }
+function toast(msg){ const el=document.getElementById('toast'); el.textContent=msg; el.style.display='block'; clearTimeout(toast._t); toast._t=setTimeout(()=>el.style.display='none',1800); }
+function uid(mod,q){ return [mod.mat,mod.topico,mod.sub,q.q].map(norm).join('|||'); }
+function dayKey(ts=Date.now()){ return new Date(ts).toISOString().slice(0,10); }
+function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+
+function setStudySetupVisible(show){
+  document.querySelectorAll('.study-setup').forEach(el=>el.classList.toggle('hidden-while-session', !show));
+  document.body.classList.toggle('session-mode', !show);
+}
+function resetSessionStats(){
+  CURRENT.sessionStats = {total:0,correct:0,wrong:0};
+}
+function finishSession(areaId, title, subtitle){
+  clearInterval(CURRENT.timerRef);
+  CURRENT.answered = false;
+  setStudySetupVisible(true);
+  const stats = CURRENT.sessionStats || {total:0,correct:0,wrong:0};
+  const acc = stats.total ? Math.round((stats.correct/stats.total)*100) : 0;
+  const pending = Object.keys(STATE.wrongMap||{}).length;
+  document.getElementById(areaId).innerHTML = `
+    <div class="card session-card">
+      <div class="section-title">Sessão finalizada</div>
+      <h2 class="headline">${title}</h2>
+      <div class="subtext">${subtitle}</div>
+      <div class="result-grid">
+        <div class="result-box"><b>${stats.correct}</b><span>Acertos</span></div>
+        <div class="result-box"><b>${stats.wrong}</b><span>Erros</span></div>
+        <div class="result-box"><b>${acc}%</b><span>Aproveitamento</span></div>
+      </div>
+      <div class="row" style="margin-top:16px">
+        <button class="btn btn-gold" onclick="startReview()">IR PARA REVISÃO (${pending})</button>
+        <button class="btn btn-dark" onclick="clearStudyArea()">VOLTAR AO MENU</button>
+      </div>
+    </div>`;
+}
+
+function defaultState(){
+  return {
+    history:[],
+    stats:{total:0,correct:0},
+    wrongMap:{},
+    session:{lastTab:'estudo'}
+  };
+}
+
+function loadBank(){
+  const current = safeParse(localStorage.getItem(LS_BANK), null);
+  if(Array.isArray(current)) return normalizeBank(current);
+  const old = safeParse(localStorage.getItem(LS_BANK_OLD), null);
+  if(Array.isArray(old)){
+    const fixed = normalizeBank(old);
+    localStorage.setItem(LS_BANK, JSON.stringify(fixed));
+    localStorage.setItem(LS_BACKUP, JSON.stringify(fixed));
+    return fixed;
+  }
+  return [];
+}
+
+function loadState(){
+  const current = safeParse(localStorage.getItem(LS_STATE), null);
+  if(current && typeof current === 'object') return Object.assign(defaultState(), current);
+  const old = safeParse(localStorage.getItem(LS_STATE_OLD), null);
+  if(old && typeof old === 'object'){
+    const migrated = Object.assign(defaultState(), {history:old.history||[], stats:old.stats||{total:0,correct:0}, wrongMap:old.wrongMap||{}});
+    localStorage.setItem(LS_STATE, JSON.stringify(migrated));
+    return migrated;
+  }
+  return defaultState();
+}
+
+function loadLessons(){
+  const rows = safeParse(localStorage.getItem(LS_LESSONS), []);
+  return Array.isArray(rows) ? rows.filter(x=>x && x.key) : [];
+}
+function persistLessons(){
+  localStorage.setItem(LS_LESSONS, JSON.stringify(LESSONS));
+}
+function getLessonByKey(key){
+  return LESSONS.find(l=>l.key===key) || null;
+}
+function buildLesson(mod, existing){
+  existing = existing || {};
+  return {
+    key: modKey(mod),
+    mat: mod.mat,
+    topico: mod.topico,
+    sub: mod.sub,
+    title: norm(existing.title || existing.titulo || mod.sub),
+    summary: norm(existing.summary || existing.resumo || existing.aula || mod.aula || ''),
+    lessonJson: norm(existing.lessonJson || existing.json || ''),
+    updatedAt: Date.now()
+  };
+}
+
+function persist(){
+  localStorage.setItem(LS_BANK, JSON.stringify(BANK));
+  localStorage.setItem(LS_BACKUP, JSON.stringify(BANK));
+  localStorage.setItem(LS_STATE, JSON.stringify(STATE));
+  persistLessons();
+}
+
+function normalizeQuestion(q, mod){
+  const opts = Array.isArray(q.opts) ? q.opts.map(norm).filter(Boolean) : [];
+  let ans = Number(q.ans);
+  if(!Number.isFinite(ans)) ans = 0;
+  if(ans < 0) ans = 0;
+  if(ans >= opts.length && opts.length) ans = 0;
+  return {
+    q: norm(q.q || q.pergunta || q.question),
+    textoLongo: norm(q.textoLongo || q.texto || ''),
+    opts,
+    ans,
+    expl: norm(q.expl || q.explain || q.comentario || ''),
+    pro: norm(q.pro || q.how || ''),
+    pegadinha: norm(q.pegadinha || ''),
+    macete: norm(q.macete || q.memo || mod.macete || ''),
+    aula: norm(q.aula || mod.aula || '')
+  };
+}
+
+function normalizeModule(mod){
+  const base = {
+    mat: norm(mod.mat || mod.materia || mod.topic || 'Geral'),
+    topico: norm(mod.topico || mod.pasta || mod.modulo || mod.tag || 'Geral') || 'Geral',
+    sub: norm(mod.sub || mod.assunto || mod.titulo || mod.topic || 'Geral') || 'Geral',
+    aula: norm(mod.aula || mod.content || mod.conteudo || ''),
+    macete: norm(mod.macete || mod.memo || ''),
+    mapaMental: norm(mod.mapaMental || mod.mapa || '')
+  };
+  const questoes = Array.isArray(mod.questoes) ? mod.questoes.map(q=>normalizeQuestion(q, base)).filter(q=>q.q && q.opts.length >= 2) : [];
+  return Object.assign(base, {questoes});
+}
+
+function normalizeBank(arr){
+  return (Array.isArray(arr)?arr:[]).map(normalizeModule).filter(m=>m.mat && m.sub).map(m=>{
+    const seen = new Set();
+    m.questoes = (m.questoes||[]).filter(q=>{ const key = q.q.toLowerCase(); if(seen.has(key)) return false; seen.add(key); return true; });
+    return m;
+  });
+}
+
+function parseImportPayload(parsed){
+  if(!parsed) return [];
+
+  if(Array.isArray(parsed)){
+    if(parsed.length && parsed[0] && Array.isArray(parsed[0].questoes)) return normalizeBank(parsed);
+    if(parsed.length && parsed[0] && (parsed[0].q || parsed[0].question)){
+      return [normalizeModule({
+        mat:'Geral', topico:'Geral', sub:norm(parsed[0].topic || 'Importado'), aula:norm(parsed[0].content || ''), macete:'',
+        questoes: parsed.map(row=>({
+          q: row.q,
+          opts: row.opts,
+          ans: row.ans,
+          expl: row.explain || row.expl || '',
+          macete: row.memo || row.macete || '',
+          pro: row.how || ''
+        }))
+      })];
+    }
+  }
+
+  if(Array.isArray(parsed.BANK) || Array.isArray(parsed.LESSONS)){
+    const bankRows = Array.isArray(parsed.BANK) ? parsed.BANK : [];
+    const lessonRows = Array.isArray(parsed.LESSONS) ? parsed.LESSONS : [];
+    const map = new Map();
+    function ensure(mat,topico,sub){
+      const key=[norm(mat||'Geral'), norm(topico||'Geral'), norm(sub||'Geral')].join('|||');
+      if(!map.has(key)) map.set(key,{mat:norm(mat||'Geral'), topico:norm(topico||'Geral')||'Geral', sub:norm(sub||'Geral')||'Geral', aula:'', macete:'', mapaMental:'', questoes:[]});
+      return map.get(key);
+    }
+    lessonRows.forEach(ls=>{
+      const mod = ensure(ls.mat, ls.topico || ls.pasta || ls.modulo, ls.sub || ls.titulo || ls.assunto);
+      if(!mod.aula) mod.aula = norm(ls.conteudo || ls.aula || ls.content || '');
+      if(!mod.macete) mod.macete = norm(ls.macete || ls.memo || '');
+    });
+    bankRows.forEach(row=>{
+      const mod = ensure(row.mat, row.topico || row.pasta || row.modulo, row.sub || row.titulo || row.assunto || row.topic);
+      const q = normalizeQuestion(row, mod);
+      if(q.q && q.opts.length >= 2) mod.questoes.push(q);
+      if(!mod.macete && q.macete) mod.macete = q.macete;
+    });
+    return normalizeBank([...map.values()]);
+  }
+
+  if(parsed.mat || parsed.sub || parsed.questoes) return normalizeBank([parsed]);
+  return [];
+}
+
+function mergeModules(newModules, replaceAll){
+  const incoming = normalizeBank(newModules);
+  if(!incoming.length) throw new Error('Nenhum módulo válido encontrado.');
+  if(replaceAll) BANK = [];
+  const index = new Map(BANK.map(m=>[[m.mat,m.topico,m.sub].join('|||'), m]));
+  let addedMods = 0, addedQs = 0;
+
+  incoming.forEach(mod=>{
+    const key = [mod.mat,mod.topico,mod.sub].join('|||');
+    let target = index.get(key);
+    if(!target){
+      target = normalizeModule(mod);
+      BANK.push(target);
+      index.set(key,target);
+      addedMods++;
+    }else{
+      if(!target.aula && mod.aula) target.aula = mod.aula;
+      if(!target.macete && mod.macete) target.macete = mod.macete;
+      if(!target.mapaMental && mod.mapaMental) target.mapaMental = mod.mapaMental;
+    }
+    const existing = new Set((target.questoes||[]).map(q=>q.q.toLowerCase()));
+    (mod.questoes||[]).forEach(q=>{
+      const keyQ = q.q.toLowerCase();
+      if(!existing.has(keyQ)){
+        target.questoes.push(q);
+        existing.add(keyQ);
+        addedQs++;
+      }
+    });
+  });
+
+  BANK = normalizeBank(BANK);
+  persist();
+  refreshAll();
+  return {addedMods, addedQs};
+}
+
+function getMats(){ return [...new Set(BANK.map(m=>m.mat))].sort((a,b)=>a.localeCompare(b,'pt-BR')); }
+
+function modKey(mod){ return [mod.mat,mod.topico,mod.sub].join('|||'); }
+function addSelection(scope){
+  if(!BANK.length) return alert('Importe um banco primeiro.');
+  const mat = document.getElementById('selMat').value;
+  const topico = document.getElementById('selTopico').value;
+  const sub = document.getElementById('selSub').value;
+  let mods = [];
+  if(scope==='mat') mods = BANK.filter(m=>m.mat===mat);
+  if(scope==='topico') mods = BANK.filter(m=>m.mat===mat && m.topico===topico);
+  if(scope==='sub') mods = BANK.filter(m=>m.mat===mat && m.topico===topico && m.sub===sub);
+  if(!mods.length) return alert('Nada encontrado para adicionar.');
+  const existing = new Set(SELECTED_KEYS);
+  let added = 0;
+  mods.forEach(mod=>{
+    const key = modKey(mod);
+    if(!existing.has(key)){ SELECTED_KEYS.push(key); existing.add(key); added++; }
+  });
+  renderSelectionQueue();
+  toast(`${added} assunto(s) adicionado(s) à fila`);
+}
+function clearSelectionQueue(){
+  SELECTED_KEYS = [];
+  renderSelectionQueue();
+}
+function getSelectedModulesList(){
+  if(!SELECTED_KEYS.length){
+    const single = getSelectedModule();
+    return single ? [single] : [];
+  }
+  const wanted = new Set(SELECTED_KEYS);
+  return BANK.filter(mod=>wanted.has(modKey(mod)));
+}
+function removeSelection(key){
+  SELECTED_KEYS = SELECTED_KEYS.filter(k=>k!==key);
+  renderSelectionQueue();
+}
+function renderSelectionQueue(){
+  const box = document.getElementById('selectionQueue');
+  if(!box) return;
+  const mods = getSelectedModulesList();
+  const explicitMods = SELECTED_KEYS.length ? mods : [];
+  if(!explicitMods.length){
+    box.innerHTML = '<div class="selection-box small muted"><b>Fila de estudo vazia.</b><br>Você pode estudar 1 assunto normal ou usar os botões acima para montar uma fila com várias matérias, tópicos ou assuntos.</div>';
+    return;
+  }
+  const totalQ = explicitMods.reduce((a,m)=>a+m.questoes.length,0);
+  box.innerHTML = `<div class="selection-box">
+    <b>Fila montada:</b> ${explicitMods.length} assunto(s) • ${totalQ} questão(ões)
+    <div class="selection-list">
+      ${explicitMods.map(mod=>`<div class="selection-chip">${esc(mod.mat)} • ${esc(mod.topico)} • ${esc(mod.sub)} <button onclick="removeSelection('${esc(modKey(mod))}')">✕</button></div>`).join('')}
+    </div>
+  </div>`;
+}
+function getSelectedModule(){
+  const mat = document.getElementById('selMat').value;
+  const topico = document.getElementById('selTopico').value;
+  const sub = document.getElementById('selSub').value;
+  return BANK.find(m=>m.mat===mat && m.topico===topico && m.sub===sub) || null;
+}
+
+function populateMats(){
+  const sel = document.getElementById('selMat');
+  const mats = getMats();
+  if(!mats.length){
+    sel.innerHTML = '<option value="">(importe um JSON)</option>';
+    document.getElementById('selTopico').innerHTML = '<option value="">(sem tópico)</option>';
+    document.getElementById('selSub').innerHTML = '<option value="">(sem assunto)</option>';
+    updateSelectedInfo();
+    return;
+  }
+  sel.innerHTML = mats.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
+  populateTopicos();
+}
+
+function populateTopicos(){
+  const mat = document.getElementById('selMat').value;
+  const tops = [...new Set(BANK.filter(m=>m.mat===mat).map(m=>m.topico||'Geral'))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
+  const sel = document.getElementById('selTopico');
+  sel.innerHTML = tops.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('') || '<option value="">(sem tópico)</option>';
+  populateSubs();
+}
+
+function populateSubs(){
+  const mat = document.getElementById('selMat').value;
+  const top = document.getElementById('selTopico').value;
+  const subs = BANK.filter(m=>m.mat===mat && m.topico===top).map(m=>m.sub).sort((a,b)=>a.localeCompare(b,'pt-BR'));
+  const sel = document.getElementById('selSub');
+  sel.innerHTML = subs.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join('') || '<option value="">(sem assunto)</option>';
+  updateSelectedInfo();
+}
+
+function updateSelectedInfo(){
+  const mod = getSelectedModule();
+  const box = document.getElementById('selectedInfo');
+  if(!mod){
+    box.innerHTML = '<div class="warn-box">Nenhum assunto carregado ainda. Importe um banco JSON ou escolha um assunto válido.</div>';
+    updateTopSummary();
+    return;
+  }
+  const total = mod.questoes.length;
+  const solved = mod.questoes.filter(q=>historyByQuestion(uid(mod,q)).length > 0).length;
+  const lesson = getLessonByKey(modKey(mod));
+  box.innerHTML = `
+    <div class="info-box"><b>${esc(mod.mat)} • ${esc(mod.topico)} • ${esc(mod.sub)}</b><br>${total} questão(ões) • ${solved} já vistas.</div>
+    ${lesson ? `<div class="comment-box" style="margin-top:10px"><b>Aula vinculada:</b><br>${esc(lesson.title || mod.sub)} • ${lesson.lessonJson ? 'apostila JSON pronta' : 'resumo salvo'}<div style="margin-top:10px"><button class="btn btn-dark" onclick="openSelectedLesson()">ABRIR AULA</button></div></div>` : ''}
+    ${mod.macete ? `<div class="memo-box" style="margin-top:10px"><b>Macete-base:</b><br>${fmt(mod.macete)}</div>` : ''}
+    ${mod.aula ? `<div class="comment-box" style="margin-top:10px"><b>Resumo explicativo:</b><br>${fmt(mod.aula)}</div>` : ''}
+    ${mod.mapaMental ? `<div class="info-box" style="margin-top:10px"><b>Mapa mental:</b><br>${fmt(mod.mapaMental)}</div>` : ''}
+  `;
+  updateTopSummary();
+  renderSelectionQueue();
+}
+
+function updateTopSummary(){
+  const totalQuestions = BANK.reduce((a,m)=>a+m.questoes.length,0);
+  const wrongCount = Object.keys(STATE.wrongMap||{}).length;
+  document.getElementById('topSummary').textContent = `${BANK.length} assuntos • ${totalQuestions} questões • ${wrongCount} erradas`;
+  document.getElementById('kpiAssuntos').textContent = BANK.length;
+  document.getElementById('kpiQuestoes').textContent = totalQuestions;
+  document.getElementById('kpiResolvidas').textContent = uniqueSolvedCount();
+  document.getElementById('kpiAproveitamento').textContent = totalAccuracy() + '%';
+}
+
+function uniqueSolvedCount(){
+  const seen = new Set((STATE.history||[]).map(h=>h.id));
+  return seen.size;
+}
+function totalAccuracy(){
+  const total = STATE.stats.total || 0;
+  const correct = STATE.stats.correct || 0;
+  return total ? Math.round((correct/total)*100) : 0;
+}
+function historyByQuestion(id){ return (STATE.history||[]).filter(h=>h.id===id); }
+
+function buildQueue(mods, priority){
+  let items = [];
+  mods.forEach(mod=>{
+    (mod.questoes||[]).forEach(q=>items.push({mod,q,id:uid(mod,q)}));
+  });
+  const seen = new Set();
+  items = items.filter(item=>{ if(seen.has(item.id)) return false; seen.add(item.id); return true; });
+  if(priority){
+    items.sort((a,b)=>wrongPriority(b.id)-wrongPriority(a.id));
+  } else {
+    items = shuffle(items);
+  }
+  return items;
+}
+
+function wrongPriority(id){
+  const w = STATE.wrongMap[id];
+  if(!w) return 0;
+  return (w.errors||0)*10 + Math.max(0, 5 - Math.min(5, w.streak||0));
+}
+
+function startStudy(mode){
+  const mods = getSelectedModulesList();
+  if(!mods.length) return alert('Selecione ou adicione ao menos um assunto válido.');
+  const totalQ = mods.reduce((a,m)=>a+(m.questoes?.length||0),0);
+  if(!totalQ) return alert('Os assuntos selecionados não têm questões.');
+  nav('estudo');
+  CURRENT.mode = 'study';
+  CURRENT.queue = buildQueue(mods, mode==='prioridade');
+  CURRENT.index = 0;
+  CURRENT.answered = false;
+  resetSessionStats();
+  setStudySetupVisible(false);
+  const area = document.getElementById('studyArea');
+  area.scrollIntoView({behavior:'smooth', block:'start'});
+  renderCurrentStudy();
+}
+
+function renderCurrentStudy(){
+  const item = CURRENT.queue[CURRENT.index];
+  if(!item){
+    finishSession('studyArea','Treino concluído.','Agora revise as que você errou até bater 3 acertos seguidos e limpar a fila.');
+    return;
+  }
+  renderQuestion(item,'studyArea',true);
+}
+
+function clearStudyArea(){
+  clearInterval(CURRENT.timerRef);
+  setStudySetupVisible(true);
+  document.getElementById('studyArea').innerHTML = '';
+}
+
+function renderQuestion(item, areaId, learningMode){
+  const area = document.getElementById(areaId);
+  if(!area) return;
+  const shuffled = shuffle(item.q.opts.map((text,idx)=>({text,idx})));
+  CURRENT.selected = item;
+  CURRENT.shuffledOpts = shuffled;
+  CURRENT.shuffledAns = shuffled.findIndex(x=>x.idx===item.q.ans);
+  CURRENT.startTs = Date.now();
+  CURRENT.answered = false;
+  const progressPct = Math.round((CURRENT.index/Math.max(CURRENT.queue.length,1))*100);
+
+  area.innerHTML = `
+    <div class="question-shell">
+      <div class="session-card">
+        <div class="question-panel">
+          <div class="progress"><span style="width:${progressPct}%"></span></div>
+          <div class="sticky-question" style="margin-top:12px">
+            <div class="question-path">
+              <div class="pill blue">${esc(item.mod.mat)} • ${esc(item.mod.topico)} • ${esc(item.mod.sub)}</div>
+              <div class="timer" id="timer">00:00</div>
+            </div>
+            <div class="small muted" style="margin-bottom:10px">Questão ${CURRENT.index + 1} de ${CURRENT.queue.length}</div>
+            <div class="question-title ${item.q.q.length > 420 ? 'long-question' : ''}">${fmt(item.q.q)}</div>
+            ${item.q.textoLongo ? `<div class="info-box long-text-box ${item.q.textoLongo.length > 1400 ? 'longer' : ''}" style="margin-top:12px"><b>Texto de apoio:</b><br>${fmt(item.q.textoLongo)}</div>` : ''}
+          </div>
+        </div>
+        <div class="options-panel">
+          ${learningMode && (item.mod.macete || item.q.aula || item.mod.aula) ? `
+            <div class="info-box" style="margin-bottom:12px"><b>Direcionamento rápido:</b><br>${fmt(item.q.aula || item.mod.aula || 'Leia o enunciado com foco no conceito central.')}</div>
+            ${item.q.macete || item.mod.macete ? `<div class="memo-box" style="margin-bottom:12px"><b>Macete estratégico:</b><br>${fmt(item.q.macete || item.mod.macete)}</div>` : ''}
+          ` : ''}
+          <div id="optionsWrap">${shuffled.map((o,i)=>`<div class="option" onclick="answerCurrent(${i},${learningMode ? 'true':'false'})">${esc(o.text)}</div>`).join('')}</div>
+        </div>
+        <div class="feedback-panel"><div id="feedbackBox" class="hidden"></div></div>
+        <div class="action-bar">
+          <div class="row">
+            <button id="nextBtn" class="btn btn-main" onclick="nextQuestion()" disabled>PRÓXIMA QUESTÃO</button>
+            <button class="btn btn-dark" onclick="repeatQuestion()">REPETIR ESTA</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  startTimer();
+  area.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function startTimer(){
+  clearInterval(CURRENT.timerRef);
+  const el = document.getElementById('timer');
+  CURRENT.timerRef = setInterval(()=>{
+    if(!el) return;
+    const diff = Math.floor((Date.now()-CURRENT.startTs)/1000);
+    const mm = String(Math.floor(diff/60)).padStart(2,'0');
+    const ss = String(diff%60).padStart(2,'0');
+    el.textContent = `${mm}:${ss}`;
+  },1000);
+}
+
+function answerCurrent(choice, learningMode){
+  const item = CURRENT.selected;
+  if(!item || CURRENT.answered) return;
+  CURRENT.answered = true;
+  clearInterval(CURRENT.timerRef);
+  const opts = [...document.querySelectorAll('#optionsWrap .option')];
+  opts.forEach(el=>el.style.pointerEvents='none');
+  const ok = choice === CURRENT.shuffledAns;
+  if(opts[choice]) opts[choice].classList.add(ok ? 'correct' : 'wrong');
+  if(opts[CURRENT.shuffledAns]) opts[CURRENT.shuffledAns].classList.add('correct');
+
+  STATE.stats.total += 1;
+  if(ok) STATE.stats.correct += 1;
+  CURRENT.sessionStats.total += 1;
+  if(ok) CURRENT.sessionStats.correct += 1; else CURRENT.sessionStats.wrong += 1;
+  const qid = item.id;
+  const spent = Math.floor((Date.now()-CURRENT.startTs)/1000);
+  STATE.history.push({id:qid, ok, ts:Date.now(), mat:item.mod.mat, topico:item.mod.topico, sub:item.mod.sub, spent});
+  if(STATE.history.length > 5000) STATE.history = STATE.history.slice(-5000);
+
+  const wrongMeta = STATE.wrongMap[qid] || {errors:0, streak:0, question:item.q.q, mat:item.mod.mat, topico:item.mod.topico, sub:item.mod.sub};
+  if(ok){
+    wrongMeta.streak = (wrongMeta.streak || 0) + 1;
+    if(wrongMeta.errors > 0){
+      if(wrongMeta.streak >= 3) delete STATE.wrongMap[qid];
+      else STATE.wrongMap[qid] = wrongMeta;
+    }
+  }else{
+    wrongMeta.errors = (wrongMeta.errors || 0) + 1;
+    wrongMeta.streak = 0;
+    wrongMeta.lastErrorTs = Date.now();
+    STATE.wrongMap[qid] = wrongMeta;
+  }
+  persist();
+  updateTopSummary();
+  renderDashboard();
+  renderWrongList();
+
+  const feedback = document.getElementById('feedbackBox');
+  feedback.classList.remove('hidden');
+  feedback.innerHTML = `
+    <div class="${ok?'comment-box':'warn-box'}"><b>${ok?'✅ Acertou':'❌ Errou'}</b><br>${ok ? 'Boa. Agora fixa o porquê da resposta.' : 'Sem problema. Usa o comentário abaixo para ajustar o raciocínio.'}</div>
+    ${item.q.expl ? `<div class="comment-box" style="margin-top:12px"><b>Comentário explicativo:</b><br>${fmt(item.q.expl)}</div>` : ''}
+    ${item.q.pro ? `<div class="info-box" style="margin-top:12px"><b>Como a questão cobra:</b><br>${fmt(item.q.pro)}</div>` : ''}
+    ${item.q.pegadinha ? `<div class="warn-box" style="margin-top:12px"><b>Pegadinha:</b><br>${fmt(item.q.pegadinha)}</div>` : ''}
+    ${(item.q.macete || item.mod.macete) ? `<div class="memo-box" style="margin-top:12px"><b>Macete final:</b><br>${fmt(item.q.macete || item.mod.macete)}</div>` : ''}
+  `;
+  const nextBtn = document.getElementById('nextBtn');
+  if(nextBtn) nextBtn.disabled = false;
+}
+
+function currentRenderArea(){ return CURRENT.mode==='review' ? 'reviewArea' : 'studyArea'; }
+function repeatQuestion(){
+  if(!CURRENT.selected) return;
+  renderQuestion(CURRENT.selected,currentRenderArea(),true);
+}
+function nextQuestion(){
+  CURRENT.index += 1;
+  if(CURRENT.mode==='review') renderCurrentReview();
+  else renderCurrentStudy();
+}
+
+function startReview(){
+  const items = Object.keys(STATE.wrongMap||{}).map(id=>locateQuestion(id)).filter(Boolean).sort((a,b)=>wrongPriority(b.id)-wrongPriority(a.id));
+  if(!items.length){
+    setStudySetupVisible(true);
+    document.getElementById('reviewArea').innerHTML = '<div class="card"><div class="comment-box"><b>Fila vazia.</b><br>Você não tem erros pendentes.</div></div>';
+    return;
+  }
+  nav('revisao');
+  CURRENT.mode = 'review';
+  CURRENT.queue = items;
+  CURRENT.index = 0;
+  CURRENT.answered = false;
+  resetSessionStats();
+  setStudySetupVisible(false);
+  renderCurrentReview();
+}
+
+function renderCurrentReview(){
+  const item = CURRENT.queue[CURRENT.index];
+  if(!item){
+    renderWrongList();
+    finishSession('reviewArea','Revisão concluída.','As questões erradas continuam aqui até você fechar 3 acertos seguidos em cada uma.');
+    return;
+  }
+  renderQuestion(item,'reviewArea',true);
+}
+
+function locateQuestion(id){
+  for(const mod of BANK){
+    for(const q of mod.questoes){
+      if(uid(mod,q)===id) return {mod,q,id};
+    }
+  }
+  return null;
+}
+
+function renderWrongList(){
+  const box = document.getElementById('wrongList');
+  const entries = Object.entries(STATE.wrongMap||{});
+  if(!entries.length){
+    box.innerHTML = '<div class="list-card"><h4>Sem erros pendentes</h4><div class="small muted">Quando você errar uma questão, ela vai aparecer aqui automaticamente.</div></div>';
+    return;
+  }
+  box.innerHTML = entries.sort((a,b)=>wrongPriority(b[0])-wrongPriority(a[0])).map(([id,meta])=>`
+    <div class="list-card">
+      <h4>${esc(meta.question || 'Questão')}</h4>
+      <div class="small muted">${esc(meta.mat||'')} • ${esc(meta.topico||'')} • ${esc(meta.sub||'')}</div>
+      <div style="margin-top:10px" class="row">
+        <div class="pill bad">Erros: ${meta.errors||0}</div>
+        <div class="pill ok">Sequência atual: ${meta.streak||0}/3</div>
+        <div class="pill blue">Prioridade: ${wrongPriority(id)}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderDashboard(){
+  const box = document.getElementById('dashboardArea');
+  const total = BANK.reduce((a,m)=>a+m.questoes.length,0);
+  const solved = uniqueSolvedCount();
+  const acc = totalAccuracy();
+  const bySubject = BANK.map(mod=>{
+    const ids = mod.questoes.map(q=>uid(mod,q));
+    const hist = (STATE.history||[]).filter(h=>ids.includes(h.id));
+    const totalAttempts = hist.length;
+    const correct = hist.filter(h=>h.ok).length;
+    const pct = totalAttempts ? Math.round((correct/totalAttempts)*100) : 0;
+    return {mod,totalAttempts,correct,pct,pendingErrors: ids.filter(id=>STATE.wrongMap[id]).length};
+  }).sort((a,b)=>b.pendingErrors-a.pendingErrors || a.mod.mat.localeCompare(b.mod.mat,'pt-BR'));
+
+  box.innerHTML = `
+    <div class="list-card">
+      <h4>Resumo geral</h4>
+      <div class="kpis" style="margin-top:12px">
+        <div class="kpi"><b>${BANK.length}</b><span>Assuntos</span></div>
+        <div class="kpi"><b>${total}</b><span>Questões</span></div>
+        <div class="kpi"><b>${solved}</b><span>Vistas</span></div>
+        <div class="kpi"><b>${acc}%</b><span>Aproveitamento</span></div>
+      </div>
+    </div>
+    ${bySubject.map(({mod,totalAttempts,correct,pct,pendingErrors})=>`
+      <div class="list-card">
+        <h4>${esc(mod.mat)} • ${esc(mod.topico)} • ${esc(mod.sub)}</h4>
+        <div class="small muted">${mod.questoes.length} questão(ões) no assunto.</div>
+        <div class="row" style="margin-top:10px">
+          <div class="pill blue">Tentativas: ${totalAttempts}</div>
+          <div class="pill ok">Acertos: ${correct}</div>
+          <div class="pill ${pendingErrors ? 'bad':'ok'}">Erros pendentes: ${pendingErrors}</div>
+          <div class="pill gold">Domínio: ${pct}%</div>
+        </div>
+      </div>
+    `).join('') || '<div class="list-card"><h4>Sem dados ainda</h4><div class="small muted">Resolva algumas questões para alimentar o dashboard.</div></div>'}
+  `;
+}
+
+
+function parseLessonJson(rawJson, fallbackTitle, fallbackSummary){
+  const base = { title: fallbackTitle || 'Aula', subtitle: fallbackSummary || '', meta: {}, sections: [] };
+  if(!rawJson) return Object.assign({}, base, fallbackSummary ? {sections:[{type:'paragraph', title:'Resumo', content:fallbackSummary}]} : {});
+  try{
+    const parsed = JSON.parse(rawJson);
+    const obj = parsed && typeof parsed === 'object' ? parsed : {};
+    const sections = Array.isArray(obj.sections) ? obj.sections : Array.isArray(obj.pages) ? obj.pages : [];
+    return {
+      title: norm(obj.title || fallbackTitle || 'Aula'),
+      subtitle: norm(obj.subtitle || obj.description || fallbackSummary || ''),
+      meta: obj.meta && typeof obj.meta === 'object' ? obj.meta : {},
+      sections: sections
+    };
+  }catch(e){
+    return Object.assign({}, base, {sections:[{type:'paragraph', title:'Conteúdo', content:rawJson}]});
+  }
+}
+
+function renderLessonSection(sec){
+  const type = norm(sec?.type || 'paragraph').toLowerCase();
+  const title = esc(sec?.title || '');
+  if(type==='divider') return '<div class="lesson-paper-divider"></div>';
+  if(type==='list' || type==='bullet'){
+    const items = Array.isArray(sec?.items) ? sec.items : [];
+    return `<section class="lesson-paper-section"><h3>${title}</h3><ul class="lesson-paper-list">${items.map(item=>`<li>${fmt(item)}</li>`).join('')}</ul></section>`;
+  }
+  if(type==='callout' || type==='highlight' || type==='summary'){
+    return `<section class="lesson-paper-callout">${title ? `<h3>${title}</h3>` : ''}<div>${fmt(sec?.content || sec?.body || '')}</div></section>`;
+  }
+  return `<section class="lesson-paper-section">${title ? `<h3>${title}</h3>` : ''}<p>${fmt(sec?.content || sec?.body || '')}</p></section>`;
+}
+
+function renderLessonPaper(lessonData){
+  const meta = lessonData?.meta || {};
+  const tags = [];
+  Object.keys(meta).forEach(k=>{ if(norm(meta[k])) tags.push(`${k}: ${meta[k]}`); });
+  const sections = Array.isArray(lessonData?.sections) ? lessonData.sections : [];
+  return `<article class="lesson-paper">
+    <div class="lesson-paper-header">
+      <h2>${esc(lessonData?.title || 'Aula')}</h2>
+      ${lessonData?.subtitle ? `<p>${fmt(lessonData.subtitle)}</p>` : ''}
+      ${tags.length ? `<div class="lesson-meta">${tags.map(tag=>`<span class="tag">${esc(tag)}</span>`).join('')}</div>` : ''}
+    </div>
+    <div>${sections.length ? sections.map(renderLessonSection).join('') : `<section class="lesson-paper-section"><p>Nenhum conteúdo estruturado ainda.</p></section>`}</div>
+  </article>`;
+}
+
+function renderLessonsList(){
+  const box = document.getElementById('lessonsList');
+  if(!box) return;
+  const mods = BANK.slice().sort((a,b)=> (a.mat+a.topico+a.sub).localeCompare(b.mat+b.topico+b.sub,'pt-BR'));
+  if(!mods.length){
+    box.innerHTML = '<div class="lesson-empty">Importe um banco primeiro para vincular as aulas aos assuntos.</div>';
+    return;
+  }
+  const selected = getSelectedModule();
+  const selectedKey = selected ? modKey(selected) : '';
+  box.innerHTML = mods.map(mod=>{
+    const key = modKey(mod);
+    const lesson = getLessonByKey(key);
+    return `<div class="lesson-item ${key===selectedKey?'active':''}" onclick="openLessonByKey('${esc(key)}')">
+      <b>${esc(lesson?.title || mod.sub)}</b><br>
+      <span class="small muted">${esc(mod.mat)} • ${esc(mod.topico)}</span>
+      <div style="margin-top:10px" class="row">
+        <div class="pill ${lesson ? 'ok' : 'blue'}">${lesson ? 'Aula salva' : 'Sem aula'}</div>
+        <div class="pill gold">${mod.questoes.length} questões</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function lessonViewerEmpty(msg){
+  const box = document.getElementById('lessonViewer');
+  if(box) box.innerHTML = `<div class="lesson-empty">${msg}</div>`;
+}
+
+function fillLessonForm(mod, lesson){
+  const target = document.getElementById('lessonTarget');
+  if(target) target.value = mod ? `${mod.mat} • ${mod.topico} • ${mod.sub}` : '';
+  document.getElementById('lessonTitle').value = lesson?.title || mod?.sub || '';
+  document.getElementById('lessonSummary').value = lesson?.summary || mod?.aula || '';
+  document.getElementById('lessonJson').value = lesson?.lessonJson || '';
+}
+
+function renderLessonViewer(mod){
+  const box = document.getElementById('lessonViewer');
+  if(!box) return;
+  if(!mod){
+    lessonViewerEmpty('Selecione um assunto na aba Estudo ou clique em um item da biblioteca para abrir a aula.');
+    fillLessonForm(null, null);
+    return;
+  }
+  const lesson = getLessonByKey(modKey(mod));
+  fillLessonForm(mod, lesson);
+  if(!lesson && !mod.aula){
+    box.innerHTML = `<div class="lesson-empty"><b>${esc(mod.sub)}</b><br>Esse assunto ainda não tem aula salva. Use o formulário abaixo para cadastrar a aula em JSON.</div>`;
+    return;
+  }
+  const title = lesson?.title || mod.sub;
+  const summary = lesson?.summary || mod.aula || '';
+  const lessonJson = lesson?.lessonJson || '';
+  const lessonData = parseLessonJson(lessonJson, title, summary);
+  box.innerHTML = `
+    <div class="section-title">Visualização</div>
+    <div class="small muted">${esc(mod.mat)} • ${esc(mod.topico)} • ${esc(mod.sub)}</div>
+    ${renderLessonPaper(lessonData)}
+    <div class="row">
+      <button class="btn btn-main" onclick="startLessonQuiz('${esc(modKey(mod))}')">TREINAR ESTA AULA</button>
+      <button class="btn btn-dark" onclick="focusLessonForm()">EDITAR AULA</button>
+    </div>
+  `;
+}
+
+function focusLessonForm(){
+  const el = document.getElementById('lessonTitle');
+  if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function openLessonByKey(key){
+  const mod = BANK.find(m=>modKey(m)===key) || null;
+  nav('aulas');
+  renderLessonsList();
+  renderLessonViewer(mod);
+}
+
+function openSelectedLesson(){
+  const mod = getSelectedModule();
+  if(!mod) return alert('Selecione um assunto na aba Estudo primeiro.');
+  openLessonByKey(modKey(mod));
+}
+
+function saveLessonFromForm(){
+  const mod = getSelectedModule();
+  if(!mod) return alert('Selecione um assunto na aba Estudo primeiro.');
+  const rawJson = document.getElementById('lessonJson').value.trim();
+  if(rawJson){
+    try{ JSON.parse(rawJson); }catch(e){ alert('JSON da aula inválido. Revise a estrutura antes de salvar.'); return; }
+  }
+  const lesson = buildLesson(mod, {
+    title: document.getElementById('lessonTitle').value,
+    summary: document.getElementById('lessonSummary').value,
+    lessonJson: rawJson
+  });
+  const idx = LESSONS.findIndex(l=>l.key===lesson.key);
+  if(idx>=0) LESSONS[idx] = lesson; else LESSONS.push(lesson);
+  persist();
+  renderLessonsList();
+  renderLessonViewer(mod);
+  updateSelectedInfo();
+  toast('Aula salva');
+}
+
+function deleteSelectedLesson(){
+  const mod = getSelectedModule();
+  if(!mod) return alert('Selecione um assunto na aba Estudo primeiro.');
+  const key = modKey(mod);
+  const idx = LESSONS.findIndex(l=>l.key===key);
+  if(idx<0) return alert('Esse assunto não tem aula salva.');
+  if(!confirm('Excluir a aula vinculada a esse assunto?')) return;
+  LESSONS.splice(idx,1);
+  persist();
+  renderLessonsList();
+  renderLessonViewer(mod);
+  updateSelectedInfo();
+  toast('Aula excluída');
+}
+
+function startLessonQuiz(key){
+  const mod = BANK.find(m=>modKey(m)===key);
+  if(!mod) return alert('Assunto não encontrado.');
+  SELECTED_KEYS = [key];
+  renderSelectionQueue();
+  nav('estudo');
+  startStudy('normal');
+}
+
+function previewImport(modules){
+  const box = document.getElementById('importPreview');
+  if(!modules.length){ box.innerHTML=''; return; }
+  const totalQ = modules.reduce((a,m)=>a+(m.questoes?.length||0),0);
+  const mats = [...new Set(modules.map(m=>m.mat))].join(', ');
+  box.innerHTML = `<div class="info-box"><b>Preview detectado</b><br>${modules.length} assunto(s) • ${totalQ} questão(ões)<br><span class="muted">Matérias: ${esc(mats)}</span></div>`;
+}
+
+function importParsed(parsed, replaceAll){
+  const modules = parseImportPayload(parsed);
+  previewImport(modules);
+  if(!modules.length) return alert('JSON inválido ou sem questões compatíveis.');
+  const result = mergeModules(modules, replaceAll);
+  toast(`Banco atualizado: +${result.addedMods} assunto(s), +${result.addedQs} questão(ões)`);
+}
+
+async function importFile(){
+  const file = document.getElementById('jsonFile').files[0];
+  if(!file) return alert('Escolha um arquivo .json.');
+  try{
+    const text = await file.text();
+    importParsed(JSON.parse(text), false);
+    document.getElementById('jsonFile').value='';
+  }catch(e){
+    alert('Não foi possível ler esse arquivo.');
+  }
+}
+function mergeTextarea(){
+  const raw = document.getElementById('jsonInput').value.trim();
+  if(!raw) return alert('Cole um JSON primeiro.');
+  try{ importParsed(JSON.parse(raw), false); } catch(e){ alert('JSON inválido.'); }
+}
+function replaceTextarea(){
+  const raw = document.getElementById('jsonInput').value.trim();
+  if(!raw) return alert('Cole um JSON primeiro.');
+  if(!confirm('Substituir todo o banco atual por esse JSON?')) return;
+  try{ importParsed(JSON.parse(raw), true); } catch(e){ alert('JSON inválido.'); }
+}
+
+function downloadBank(){
+  const blob = new Blob([JSON.stringify(BANK,null,2)],{type:'application/json;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'diego_ultra_v14_banco.json';
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000);
+}
+function copyBank(){ copyText(JSON.stringify(BANK,null,2),'Banco copiado'); }
+function copyHistory(){ copyText(JSON.stringify(STATE.history||[],null,2),'Histórico copiado'); }
+function backupBank(){ localStorage.setItem(LS_BACKUP, JSON.stringify(BANK)); toast('Backup salvo'); }
+function restoreBackup(){
+  const backup = safeParse(localStorage.getItem(LS_BACKUP),[]);
+  if(!Array.isArray(backup) || !backup.length) return alert('Nenhum backup encontrado.');
+  BANK = normalizeBank(backup); persist(); refreshAll(); toast('Backup restaurado');
+}
+function copyText(text,msg){
+  if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(text).then(()=>toast(msg)).catch(()=>prompt('Copie manualmente:',text)); }
+  else prompt('Copie manualmente:',text);
+}
+
+function resetAll(){
+  if(!confirm('Apagar banco, histórico e erros?')) return;
+  BANK = [];
+  STATE = defaultState();
+  LESSONS = [];
+  persist();
+  clearStudyArea();
+  document.getElementById('reviewArea').innerHTML='';
+  document.getElementById('jsonInput').value='';
+  refreshAll();
+  toast('Tudo zerado');
+}
+
+function nav(id,ev){
+  document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));
+  const sec = document.getElementById('sec-'+id);
+  if(sec) sec.classList.remove('hidden');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  const tab = ev?.currentTarget || document.querySelector(`.tab[data-tab="${id}"]`);
+  if(tab) tab.classList.add('active');
+  STATE.session.lastTab = id;
+  persist();
+  if(id==='dashboard') renderDashboard();
+  if(id==='revisao') renderWrongList();
+  if(id==='aulas'){
+    renderLessonsList();
+    renderLessonViewer(getSelectedModule());
+  }
+  if(id!=='estudo' && id!=='revisao') setStudySetupVisible(true);
+}
+
+function refreshAll(){
+  populateMats();
+  updateSelectedInfo();
+  updateTopSummary();
+  renderSelectionQueue();
+  renderDashboard();
+  renderWrongList();
+  renderLessonsList();
+  renderLessonViewer(getSelectedModule());
+}
+
+function installDropzone(){
+  const dz = document.getElementById('dropzone');
+  ['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{ e.preventDefault(); dz.style.borderColor='rgba(34,211,238,.8)'; }));
+  ['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{ e.preventDefault(); dz.style.borderColor='rgba(99,102,241,.5)'; }));
+  dz.addEventListener('drop', async e=>{
+    const file = e.dataTransfer.files?.[0];
+    if(!file) return;
+    try{ const text = await file.text(); importParsed(JSON.parse(text), false); } catch(err){ alert('Arquivo inválido.'); }
+  });
+}
+
+function init(){
+  refreshAll();
+  installDropzone();
+  const lastTab = STATE.session?.lastTab || 'estudo';
+  nav(lastTab);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
