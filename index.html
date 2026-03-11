@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
   <meta name="theme-color" content="#050816" />
-  <title>Diego Smart Study V22</title>
+  <title>DIEGO SMART STUDY V27 TITANIUM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -76,7 +76,7 @@
     .hidden{display:none!important}
     .dropzone{border:2px dashed rgba(99,102,241,.5);padding:18px;border-radius:18px;background:rgba(99,102,241,.06);text-align:center;color:#c7d2fe}
     .question-shell{display:grid;gap:14px}
-    .sticky-question{position:sticky;top:112px;z-index:1000;border-radius:20px;padding:18px;background:linear-gradient(180deg,rgba(17,24,39,.92),rgba(8,11,24,.98));border:1px solid var(--line);box-shadow:var(--shadow)}
+    .sticky-question{position:sticky;top:78px;top:112px;z-index:1000;border-radius:20px;padding:18px;background:linear-gradient(180deg,rgba(17,24,39,.92),rgba(8,11,24,.98));border:1px solid var(--line);box-shadow:var(--shadow)}
     .question-path{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
     .question-title{font-size:1.06rem;font-weight:900;line-height:1.55;white-space:pre-wrap}
     .timer{padding:8px 12px;border-radius:999px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.4);font-weight:900;color:#c7d2fe;font-size:.78rem}
@@ -211,11 +211,13 @@
     @media(max-width:900px){.grid-2,.hero,.lesson-layout{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:640px){.container{padding:14px}.head-top{flex-direction:column;align-items:flex-start}.kpis{grid-template-columns:1fr 1fr}.sticky-question{top:102px}}
   
-.logo{width:40px;height:40px;object-fit:contain}
-.brand{display:flex;align-items:center;gap:10px}
-.brand-title{font-weight:800;font-size:18px}
-.brand-sub{font-size:11px;color:#94a3b8;margin-top:-2px}
-.brand-text{display:flex;flex-direction:column;line-height:1.1}
+.logo{width:112px;height:112px;object-fit:contain;filter:drop-shadow(0 10px 24px rgba(34,211,238,.22))}
+.brand{display:flex;align-items:center;gap:16px}
+.brand-title{font-weight:900;font-size:28px;letter-spacing:.03em}
+.brand-sub{font-size:14px;color:#cbd5e1;margin-top:4px}
+.brand-text{display:flex;flex-direction:column;line-height:1.08}
+.version-badge{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:7px 12px;border-radius:999px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.35);color:#c7d2fe;font-size:.74rem;font-weight:900;letter-spacing:.05em}
+@media(max-width:640px){.logo{width:84px;height:84px}.brand-title{font-size:21px}.brand-sub{font-size:12px}}
 
 
     .mindmap-card{
@@ -259,6 +261,17 @@
     .turbo-box{margin-top:12px;padding:12px 14px;border-radius:16px;border:1px solid rgba(245,158,11,.25);background:rgba(245,158,11,.07)}
     .turbo-box label{margin:0;font-size:.88rem;font-weight:800;color:#fde68a;text-transform:none;letter-spacing:0}
 
+
+    .xp-wrap{display:grid;gap:10px;margin-top:12px}
+    .xp-bar{height:12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);overflow:hidden}
+    .xp-bar>span{display:block;height:100%;background:linear-gradient(90deg,#f59e0b,#22d3ee);width:0}
+    .mini-bar{height:10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);overflow:hidden;min-width:120px}
+    .mini-bar>span{display:block;height:100%;background:linear-gradient(90deg,#ef4444,#f59e0b,#10b981)}
+    .dash-block{display:grid;gap:10px}
+    .focus-item{display:grid;gap:8px;padding:14px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+    .focus-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .trap-box{padding:12px 14px;border-radius:16px;border:1px solid rgba(239,68,68,.25);background:rgba(239,68,68,.08);color:#fecaca}
+
 </style>
 </head>
 <body>
@@ -271,6 +284,7 @@
   <div class="brand-text">
     <div class="brand-title">DIEGO SMART STUDY</div>
     <div class="brand-sub">Sistema Inteligente de Questões</div>
+    <div class="version-badge">VERSÃO V27 TITANIUM</div>
   </div>
 </div>
 
@@ -294,9 +308,10 @@
         <div class="kpis" style="grid-template-columns:1fr 1fr">
           <div class="kpi"><b id="kpiAssuntos">0</b><span>Assuntos</span></div>
           <div class="kpi"><b id="kpiQuestoes">0</b><span>Questões</span></div>
-          <div class="kpi"><b id="kpiResolvidas">0</b><span>Hoje</span></div>
+          <div class="kpi"><b id="kpiResolvidas">0</b><span>Válidas hoje</span></div>
           <div class="kpi"><b id="kpiAproveitamento">0</b><span>Tentativas</span></div>
         </div>
+        
       </div>
     </div>
 
@@ -318,6 +333,9 @@
         <div class="turbo-box">
           <label><input id="turboMode" type="checkbox" style="width:auto;margin-right:8px"> Ativar modo turbo (vai para a próxima automaticamente; erros voltam depois até você acertar)</label>
         </div>
+        <div class="turbo-box">
+          <label><input id="repeatUntilCorrect" type="checkbox" style="width:auto;margin-right:8px"> Se errar, repetir a mesma até acertar</label>
+        </div>
         <div class="row" style="margin-top:14px">
           <button class="btn btn-main" onclick="startStudy('normal')">INICIAR TREINO</button>
           <button class="btn btn-gold" onclick="startStudy('prioridade')">PRIORIZAR ERROS</button>
@@ -325,6 +343,7 @@
           <button class="btn btn-dark" onclick="clearCheckpoint()">REINICIAR SESSÃO</button>
           <button class="btn btn-dark" onclick="clearSelectionQueue()">LIMPAR FILA</button>
         </div>
+        
       </div>
     </div>
 
@@ -400,6 +419,7 @@
         <div class="session-actions">
           <button class="btn btn-gold" onclick="startSimuladoProva()">INICIAR SIMULADO</button>
         </div>
+        
       </div>
     </div>
 
@@ -479,6 +499,7 @@
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   </section>
@@ -514,7 +535,7 @@ let STATE = loadState();
 let LESSONS = loadLessons();
 let SELECTED_KEYS = [];
 let SIM_SETUP = [];
-let CURRENT = { mode:null, queue:[], index:0, selected:null, shuffledOpts:[], shuffledAns:0, startTs:0, timerRef:null, answered:false, sessionStats:{total:0,correct:0,wrong:0}, turbo:false, pendingWrongIds:[] };
+let CURRENT = { mode:null, queue:[], index:0, selected:null, shuffledOpts:[], shuffledAns:0, startTs:0, timerRef:null, answered:false, sessionStats:{total:0,correct:0,wrong:0}, turbo:false, repeatUntilCorrect:false, pendingWrongIds:[], lastAnswerCorrect:null };
 
 function safeParse(raw,fallback){ try{return raw?JSON.parse(raw):fallback}catch(e){return fallback} }
 function norm(v){ return String(v ?? '').trim(); }
@@ -541,6 +562,7 @@ function saveCheckpoint(){
     sessionStats: CURRENT.sessionStats || {total:0,correct:0,wrong:0},
     simAnswers: CURRENT.simAnswers || {},
     turbo: !!CURRENT.turbo,
+    repeatUntilCorrect: !!CURRENT.repeatUntilCorrect,
     pendingWrongIds: CURRENT.pendingWrongIds || [],
     ts: Date.now()
   };
@@ -568,11 +590,14 @@ function continueCheckpoint(){
   CURRENT.queue = queue;
   CURRENT.index = Math.min(Math.max(Number(cp.index)||0, 0), Math.max(queue.length-1, 0));
   CURRENT.answered = false;
+  CURRENT.lastAnswerCorrect = null;
   CURRENT.sessionStats = Object.assign({total:0,correct:0,wrong:0}, cp.sessionStats || {});
   CURRENT.simAnswers = Object.assign({}, cp.simAnswers || {});
   CURRENT.turbo = !!cp.turbo;
+  CURRENT.repeatUntilCorrect = !!cp.repeatUntilCorrect;
   CURRENT.pendingWrongIds = Array.isArray(cp.pendingWrongIds) ? cp.pendingWrongIds : [];
   const turboEl = document.getElementById('turboMode'); if(turboEl) turboEl.checked = CURRENT.turbo;
+  const repeatEl = document.getElementById('repeatUntilCorrect'); if(repeatEl) repeatEl.checked = CURRENT.repeatUntilCorrect;
   setStudySetupVisible(CURRENT.mode !== 'study');
   nav(CURRENT.mode === 'review' ? 'revisao' : (CURRENT.mode === 'simulado' ? 'simulado' : 'estudo'));
   if(CURRENT.mode === 'review') renderCurrentReview();
@@ -611,6 +636,12 @@ function toggleSupportText(){
   box.classList.toggle('hidden');
   if(btn) btn.textContent = box.classList.contains('hidden') ? 'VER TEXTO DE APOIO' : 'OCULTAR TEXTO DE APOIO';
 }
+
+function getActiveFeedbackBox(){
+  const areaId = currentRenderArea();
+  return document.querySelector(`#${areaId} .feedback-box`) || document.querySelector('#dashboardArea .feedback-box') || null;
+}
+
 
 function toast(msg){ const el=document.getElementById('toast'); el.textContent=msg; el.style.display='block'; clearTimeout(toast._t); toast._t=setTimeout(()=>el.style.display='none',1800); }
 function uid(mod,q){ return [mod.mat,mod.topico,mod.sub,q.q].map(norm).join('|||'); }
@@ -953,11 +984,71 @@ function updateSelectedInfo(){
   renderSelectionQueue();
 }
 
+
+function pct(a,b){ return b ? Math.round((a/b)*100) : 0; }
+function groupHistory(){
+  const map = new Map();
+  (STATE.history||[]).forEach(h=>{
+    const key=[h.mat,h.topico,h.sub].join(' • ');
+    const row=map.get(key)||{label:key,total:0,correct:0,errors:0,lastTs:0};
+    row.total += 1;
+    if(h.ok) row.correct += 1; else row.errors += 1;
+    row.lastTs = Math.max(row.lastTs||0, h.ts||0);
+    map.set(key,row);
+  });
+  return [...map.values()].map(r=>Object.assign(r,{acc:pct(r.correct,r.total)}));
+}
+function xpInfo(){
+  const total=(STATE.history||[]).length;
+  const correct=(STATE.history||[]).filter(h=>h.ok).length;
+  const xp = correct*10 + (total-correct)*3 + todayUniqueCount()*2;
+  const level = Math.max(1, Math.floor(xp/250)+1);
+  const nextXp = level*250;
+  const prevXp = (level-1)*250;
+  const pctLvl = Math.max(0, Math.min(100, Math.round(((xp-prevXp)/(nextXp-prevXp))*100)));
+  return {xp, level, nextXp, prevXp, pct:pctLvl};
+}
+function topDominatedSubjects(){
+  return groupHistory().filter(r=>r.total>=8 && r.acc>=80).sort((a,b)=>b.acc-a.acc || b.total-a.total).slice(0,5);
+}
+function radarInfo(){
+  const total=(STATE.history||[]).length;
+  const acc = totalAccuracy();
+  let status='baixo';
+  if(acc>=80 && total>=40) status='alto';
+  else if(acc>=60 && total>=20) status='medio';
+  return {acc,total,status};
+}
+function heatmapSubjects(){
+  return groupHistory().filter(r=>r.total>=3).sort((a,b)=>a.acc-b.acc).slice(0,6);
+}
+function antiForgetSubjects(){
+  const now=Date.now();
+  return groupHistory().filter(r=>r.total>=4).map(r=>{
+    const days=Math.floor((now-r.lastTs)/86400000);
+    const risk=Math.max(0, Math.min(100, days*12 + (100-r.acc)));
+    return Object.assign(r,{days,risk});
+  }).filter(r=>r.risk>=45).sort((a,b)=>b.risk-a.risk).slice(0,5);
+}
+function trainFocusSubject(label){
+  const [mat,topico,sub] = String(label).split(' • ');
+  const mods = BANK.filter(m=>m.mat===mat && m.topico===topico && m.sub===sub);
+  if(!mods.length) return;
+  SELECTED_KEYS = mods.map(modKey);
+  renderSelectionQueue();
+  nav('estudo');
+  startStudy('prioridade');
+}
+function detectTrapWords(text){
+  const words=['sempre','nunca','apenas','somente','exclusivamente','obrigatoriamente','jamais'];
+  return words.filter(w=>String(text||'').toLowerCase().includes(w));
+}
 function updateTopSummary(){
   const totalQuestions = BANK.reduce((a,m)=>a+m.questoes.length,0);
   const unique = todayUniqueCount();
   const attempts = todayAttempts();
-  document.getElementById('topSummary').textContent = `${BANK.length} assuntos • ${totalQuestions} questões • Hoje: ${unique}/300`;
+  const xp = xpInfo();
+  document.getElementById('topSummary').textContent = `${BANK.length} assuntos • ${totalQuestions} questões • Válidas hoje: ${unique}/300 • Lv ${xp.level}`;
   document.getElementById('kpiAssuntos').textContent = BANK.length;
   document.getElementById('kpiQuestoes').textContent = totalQuestions;
   document.getElementById('kpiResolvidas').textContent = unique;
@@ -991,13 +1082,17 @@ function focusSubjects(){
   const map=new Map();
   (STATE.history||[]).forEach(h=>{
     const key=[h.mat,h.topico,h.sub].join(' • ');
-    const row=map.get(key)||{label:key,total:0,errors:0};
+    const row=map.get(key)||{label:key,total:0,errors:0,correct:0,lastTs:0};
     row.total += 1;
-    if(!h.ok) row.errors += 1;
+    if(h.ok) row.correct += 1; else row.errors += 1;
+    row.lastTs = Math.max(row.lastTs||0, h.ts||0);
     map.set(key,row);
   });
-  return [...map.values()].filter(r=>r.errors>0).map(r=>Object.assign(r,{pct:r.total?Math.round((r.errors/r.total)*100):0}))
-    .sort((a,b)=>b.errors-a.errors || b.pct-a.pct).slice(0,6);
+  return [...map.values()]
+    .map(r=>Object.assign(r,{pct:r.total?Math.round((r.correct/r.total)*100):0, miss:r.total?Math.round((r.errors/r.total)*100):0}))
+    .filter(r=>r.total>=3 && r.errors>0 && (r.pct<75 || r.errors>=2))
+    .sort((a,b)=>b.errors-a.errors || a.pct-b.pct || b.lastTs-a.lastTs)
+    .slice(0,6);
 }
 
 function buildQueue(mods, priority){
@@ -1032,11 +1127,13 @@ function startStudy(mode){
   CURRENT.index = 0;
   CURRENT.answered = false;
   CURRENT.turbo = !!document.getElementById('turboMode')?.checked;
+  CURRENT.repeatUntilCorrect = !!document.getElementById('repeatUntilCorrect')?.checked;
   CURRENT.pendingWrongIds = [];
   resetSessionStats();
   setStudySetupVisible(false);
   saveCheckpoint();
   const area = document.getElementById('studyArea');
+  window.scrollTo({top:0,behavior:'smooth'});
   area.scrollIntoView({behavior:'smooth', block:'start'});
   renderCurrentStudy();
 }
@@ -1070,7 +1167,6 @@ function renderQuestion(item, areaId, learningMode){
   const qText = item.q.q || '';
   const longQuestion = qText.length > 350;
 
-
   area.innerHTML = `
     <div class="question-shell">
       <div class="session-card">
@@ -1082,19 +1178,16 @@ function renderQuestion(item, areaId, learningMode){
               ${CURRENT.mode==='simulado' ? '<div class="timer" id="timer">00:00</div>' : ''}
             </div>
             <div class="small muted" style="margin-bottom:10px">Questão ${CURRENT.index + 1} de ${CURRENT.queue.length}</div>
-            ${longQuestion ? `<button class="toggle-btn" id="qTextBtn" onclick="toggleQuestionText()">VER TEXTO DA QUESTÃO</button>
-<div id="qTextBox" class="support-box hidden">${fmt(qText)}</div>` :
-`<div class="question-title ${item.q.q.length > 420 ? 'long-question' : ''}">${fmt(item.q.q)}</div>`}
+            ${longQuestion ? `<button class="toggle-btn" id="qTextBtn" onclick="toggleQuestionText()">VER TEXTO DA QUESTÃO</button><div id="qTextBox" class="support-box hidden">${fmt(qText)}</div>` : `<div class="question-title ${item.q.q.length > 420 ? 'long-question' : ''}">${fmt(item.q.q)}</div>`}
           </div>
         </div>
         <div class="options-panel">
           <div id="optionsWrap">${shuffled.map((o,i)=>`<div class="option" onclick="answerCurrent(${i},${learningMode ? 'true':'false'})">${esc(o.text)}</div>`).join('')}</div>
         </div>
-        <div class="feedback-panel"><div id="feedbackBox" class="hidden"></div></div>
         <div class="action-bar">
           <div class="row">
             <button id="nextBtn" class="btn btn-main" onclick="nextQuestion()" disabled>PRÓXIMA QUESTÃO</button>
-            <button class="btn btn-dark" onclick="repeatQuestion()">REPETIR ESTA</button>
+            <button id="repeatBtn" class="btn btn-dark" onclick="repeatQuestion()">REPETIR ESTA</button>
           </div>
           ${(learningMode && item.mod.mapaMental) || item.q.textoLongo ? `
           <div class="action-subrow">
@@ -1104,11 +1197,13 @@ function renderQuestion(item, areaId, learningMode){
           ${item.q.textoLongo ? `<div id="supportBox" class="support-box hidden"><b>Texto de apoio:</b><br>${fmt(item.q.textoLongo)}</div>` : ''}
           ` : ''}
         </div>
+        <div class="feedback-panel"><div class="feedback-box hidden"></div></div>
       </div>
     </div>
   `;
   saveCheckpoint();
   if(CURRENT.mode==='simulado') startTimer(); else clearInterval(CURRENT.timerRef);
+  window.scrollTo({top:0,behavior:'smooth'});
   area.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
@@ -1129,9 +1224,11 @@ function answerCurrent(choice, learningMode){
   if(!item || CURRENT.answered) return;
   CURRENT.answered = true;
   clearInterval(CURRENT.timerRef);
-  const opts = [...document.querySelectorAll('#optionsWrap .option')];
+  const area = document.getElementById(currentRenderArea());
+  const opts = [...(area ? area.querySelectorAll('#optionsWrap .option') : [])];
   opts.forEach(el=>el.style.pointerEvents='none');
   const ok = choice === CURRENT.shuffledAns;
+  CURRENT.lastAnswerCorrect = ok;
   if(opts[choice]) opts[choice].classList.add(ok ? 'correct' : 'wrong');
   if(opts[CURRENT.shuffledAns]) opts[CURRENT.shuffledAns].classList.add('correct');
 
@@ -1141,7 +1238,7 @@ function answerCurrent(choice, learningMode){
   if(ok) CURRENT.sessionStats.correct += 1; else CURRENT.sessionStats.wrong += 1;
   const qid = item.id;
   const spent = Math.floor((Date.now()-CURRENT.startTs)/1000);
-  STATE.history.push({id:qid, ok, ts:Date.now(), mat:item.mod.mat, topico:item.mod.topico, sub:item.mod.sub, spent});
+  STATE.history.push({id:qid, ok, ts:Date.now(), mat:item.mod.mat, topico:item.mod.topico, sub:item.mod.sub, spent, source:CURRENT.mode||'study'});
   if(STATE.history.length > 5000) STATE.history = STATE.history.slice(-5000);
 
   const wrongMeta = STATE.wrongMap[qid] || {errors:0, streak:0, question:item.q.q, mat:item.mod.mat, topico:item.mod.topico, sub:item.mod.sub};
@@ -1158,7 +1255,7 @@ function answerCurrent(choice, learningMode){
     wrongMeta.lastErrorTs = Date.now();
     STATE.wrongMap[qid] = wrongMeta;
     CURRENT.pendingWrongIds = CURRENT.pendingWrongIds || [];
-    if(CURRENT.mode==='study' && CURRENT.turbo && !CURRENT.pendingWrongIds.includes(qid)){
+    if(CURRENT.mode==='study' && CURRENT.turbo && !CURRENT.repeatUntilCorrect && !CURRENT.pendingWrongIds.includes(qid)){
       CURRENT.queue.push(item);
       CURRENT.pendingWrongIds.push(qid);
     }
@@ -1168,41 +1265,38 @@ function answerCurrent(choice, learningMode){
   renderDashboard();
   renderWrongList();
 
-  const supportBtn = document.getElementById('supportBtn');
-  const supportBox = document.getElementById('supportBox');
-  const mapBtn = document.getElementById('mapBtn');
-  if(supportBtn) supportBtn.remove();
-  if(supportBox) supportBox.remove();
-  if(mapBtn) mapBtn.remove();
-
-  const feedback = document.getElementById('feedbackBox');
-  feedback.classList.remove('hidden');
-  const chosenText = CURRENT.shuffledOpts?.[choice]?.text || '';
-  const correctText = CURRENT.shuffledOpts?.[CURRENT.shuffledAns]?.text || '';
-  feedback.innerHTML = `
-    <div class="feedback-stack">
-      <div class="result-hero ${ok?'ok':'bad'}">
-        <div class="result-title">${ok?'✅ Resposta correta':'❌ Resposta incorreta'}</div>
-        <div>${ok ? 'Boa. Agora fixa o conceito para ganhar velocidade nas próximas.' : `Você marcou <b>${esc(chosenText)}</b>, mas a correta era <b>${esc(correctText)}</b>. Veja abaixo por que sua resposta estava errada.`}</div>
+  const feedback = getActiveFeedbackBox();
+  if(feedback){
+    feedback.classList.remove('hidden');
+    const chosenText = CURRENT.shuffledOpts?.[choice]?.text || '';
+    const correctText = CURRENT.shuffledOpts?.[CURRENT.shuffledAns]?.text || '';
+    const traps = detectTrapWords((item.q.q||'') + ' ' + (chosenText||'') + ' ' + (correctText||''));
+    feedback.innerHTML = `
+      <div class="feedback-stack">
+        <div class="result-hero ${ok?'ok':'bad'}">
+          <div class="result-title">${ok?'✅ Resposta correta':'❌ Resposta incorreta'}</div>
+          <div>${ok ? 'Boa. Agora fixa o conceito para ganhar velocidade nas próximas.' : `Você marcou <b>${esc(chosenText)}</b>, mas a correta era <b>${esc(correctText)}</b>. Veja abaixo por que sua resposta estava errada.`}</div>
+        </div>
+        ${traps.length ? `<div class="trap-box"><b>Caça-pegadinha:</b> atenção às palavras ${traps.map(t=>`<b>${esc(t)}</b>`).join(', ')}.</div>` : ''}
+        <div class="review-grid">
+          ${item.q.expl ? `<div class="review-card explain"><h4>Explicação</h4>${fmt(item.q.expl)}</div>` : ''}
+          ${item.q.pegadinha ? `<div class="review-card warn"><h4>Pegadinha</h4>${fmt(item.q.pegadinha)}</div>` : ''}
+          ${(item.q.macete || item.mod.macete) ? `<div class="review-card memo"><h4>Macete</h4>${fmt(item.q.macete || item.mod.macete)}</div>` : ''}
+          ${item.q.pro ? `<div class="review-card pro"><h4>Como a banca cobra</h4>${fmt(item.q.pro)}</div>` : ''}
+        </div>
       </div>
-      <div class="review-grid">
-        ${item.q.expl ? `<div class="review-card explain"><h4>Explicação</h4>${fmt(item.q.expl)}</div>` : ''}
-        ${item.q.pro ? `<div class="review-card pro"><h4>Como a banca cobra</h4>${fmt(item.q.pro)}</div>` : ''}
-        ${item.q.pegadinha ? `<div class="review-card warn"><h4>Pegadinha</h4>${fmt(item.q.pegadinha)}</div>` : ''}
-        ${(item.q.macete || item.mod.macete) ? `<div class="review-card memo"><h4>Macete</h4>${fmt(item.q.macete || item.mod.macete)}</div>` : ''}
-      </div>
-    </div>
-  `;
+    `;
+  }
   saveCheckpoint();
 
-  const nextBtn = document.getElementById('nextBtn');
+  const nextBtn = area ? area.querySelector('#nextBtn') : null;
   if(nextBtn) nextBtn.disabled = false;
-
-  const repeatBtn = document.querySelector('.action-bar .btn.btn-dark');
-  if(repeatBtn) repeatBtn.textContent = (CURRENT.mode==='study' && !ok && !CURRENT.turbo) ? 'TENTAR NOVAMENTE' : 'REPETIR ESTA';
+  const repeatBtn = area ? area.querySelector('#repeatBtn') : null;
+  if(repeatBtn) repeatBtn.textContent = (CURRENT.mode==='study' && !ok) ? 'TENTAR NOVAMENTE' : 'REPETIR ESTA';
 
   if(CURRENT.mode==='study' && CURRENT.turbo){
-    setTimeout(()=>nextQuestion(), 350);
+    if(!ok && CURRENT.repeatUntilCorrect) setTimeout(()=>repeatQuestion(), 350);
+    else setTimeout(()=>nextQuestion(), 350);
   }
 }
 
@@ -1212,6 +1306,11 @@ function repeatQuestion(){
   renderQuestion(CURRENT.selected,currentRenderArea(),true);
 }
 function nextQuestion(){
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(CURRENT.mode==='study' && CURRENT.repeatUntilCorrect && CURRENT.answered && CURRENT.lastAnswerCorrect===false){
+    repeatQuestion();
+    return;
+  }
   CURRENT.index += 1;
   saveCheckpoint();
   if(CURRENT.mode==='review') renderCurrentReview();
@@ -1271,6 +1370,7 @@ function renderWrongList(){
         <div class="pill bad">Erros: ${meta.errors||0}</div>
         <div class="pill ok">Sequência atual: ${meta.streak||0}/3</div>
         <div class="pill blue">Prioridade: ${wrongPriority(id)}</div>
+        
       </div>
     </div>
   `).join('');
@@ -1286,8 +1386,26 @@ function renderDashboard(){
   const attempts = todayAttempts();
   const subjects = todaySubjects();
   const focus = focusSubjects();
+  const xp = xpInfo();
+  const dom = topDominatedSubjects();
+  const radar = radarInfo();
+  const heat = heatmapSubjects();
+  const forget = antiForgetSubjects();
 
   box.innerHTML = `
+    <div class="list-card">
+      <h4>XP de estudo</h4>
+      <div class="xp-wrap">
+        <div class="row">
+          <div class="pill gold">LEVEL ${xp.level}</div>
+          <div class="pill blue">XP ${xp.xp}</div>
+          <div class="pill ${radar.status==='alto'?'ok':radar.status==='medio'?'gold':'bad'}">Radar ${radar.status.toUpperCase()}</div><div class="pill blue">Precisão ${radar.acc}%</div>
+        </div>
+        <div class="xp-bar"><span style="width:${xp.pct}%"></span></div>
+        <div class="small muted">Próximo nível em ${xp.nextXp} XP</div>
+      </div>
+    </div>
+
     <div class="list-card">
       <h4>Resumo geral</h4>
       <div class="kpis" style="margin-top:12px">
@@ -1297,22 +1415,38 @@ function renderDashboard(){
         <div class="kpi"><b>${acc}%</b><span>Aproveitamento</span></div>
       </div>
     </div>
+
     <div class="list-card">
       <h4>Hoje</h4>
       <div class="kpis" style="margin-top:12px">
-        <div class="kpi"><b>${todayUnique}</b><span>Únicas</span></div>
+        <div class="kpi"><b>${todayUnique}</b><span>Válidas hoje</span></div>
         <div class="kpi"><b>${attempts}</b><span>Tentativas</span></div>
         <div class="kpi"><b>${Math.max(0,300-todayUnique)}</b><span>Faltam p/ 300</span></div>
         <div class="kpi"><b>${subjects.length}</b><span>Assuntos hoje</span></div>
       </div>
+      ${subjects.length ? `<div class="dash-block">${subjects.slice(0,6).map(s=>`<div class="focus-item"><div><b>${esc(s.label)}</b></div><div class="small muted">${s.count} tentativa(s) hoje</div></div>`).join('')}</div>` : ''}
     </div>
+
     <div class="list-card">
-      <h4>Hoje estudei</h4>
-      ${subjects.length ? subjects.map(s=>`<div class="row" style="margin-top:10px"><div class="pill blue">${esc(s.label)}</div><div class="pill gold">${s.count}</div></div>`).join('') : '<div class="small muted">Você ainda não respondeu questões hoje.</div>'}
+      <h4>Ranking de assuntos dominados</h4>
+      ${dom.length ? dom.map((s,i)=>`<div class="focus-item"><div><b>${i+1}. ${esc(s.label)}</b></div><div class="row"><div class="pill ok">${s.acc}%</div><div class="pill blue">${s.total} questões</div></div></div>`).join('') : '<div class="small muted">Domine mais assuntos para aparecer aqui.</div>'}
     </div>
+
     <div class="list-card">
-      <h4>Foco de estudo</h4>
-      ${focus.length ? focus.map(s=>`<div class="row" style="margin-top:10px"><div class="pill bad">${esc(s.label)}</div><div class="pill gold">Erros: ${s.errors}</div><div class="pill blue">${s.pct}%</div></div>`).join('') : '<div class="small muted">Sem assuntos críticos por enquanto.</div>'}
+      <h4>Assuntos que preciso de atenção</h4>
+      ${focus.length ? focus.map(s=>`<div class="focus-item"><div><b>${esc(s.label)}</b></div><div class="row"><div class="pill bad">Erros: ${s.errors}</div><div class="pill blue">Acerto ${s.pct}%</div></div><div class="focus-actions"><button class="btn btn-main" onclick="trainFocusSubject('${esc(s.label)}')">IR TREINAR</button></div></div>`).join('') : '<div class="small muted">Sem assuntos críticos por enquanto.</div>'}
+    </div>
+
+    <div class="list-card">
+      <h4>Mapa de calor</h4>
+      <div class="dash-block">
+        ${heat.length ? heat.map(s=>`<div class="focus-item"><div><b>${esc(s.label)}</b></div><div class="row"><div class="mini-bar"><span style="width:${s.acc}%"></span></div><div class="pill ${s.acc>=80?'ok':s.acc>=60?'gold':'bad'}">${s.acc}%</div></div></div>`).join('') : '<div class="small muted">Responda mais questões para gerar o mapa de calor.</div>'}
+      </div>
+    </div>
+
+    <div class="list-card">
+      <h4>Treino anti-esquecimento</h4>
+      ${forget.length ? forget.map(s=>`<div class="focus-item"><div><b>${esc(s.label)}</b></div><div class="row"><div class="pill gold">Risco ${s.risk}%</div><div class="pill blue">${s.days} dia(s)</div></div><div class="focus-actions"><button class="btn btn-dark" onclick="trainFocusSubject('${esc(s.label)}')">REVISAR AGORA</button></div></div>`).join('') : '<div class="small muted">Nada urgente para revisar agora.</div>'}
     </div>
   `;
 }
@@ -1383,6 +1517,7 @@ function renderLessonsList(){
       <div style="margin-top:10px" class="row">
         <div class="pill ${lesson ? 'ok' : 'blue'}">${lesson ? 'Aula salva' : 'Sem aula'}</div>
         <div class="pill gold">${mod.questoes.length} questões</div>
+        
       </div>
     </div>`;
   }).join('');
@@ -1533,7 +1668,7 @@ function downloadBank(){
   const blob = new Blob([JSON.stringify(BANK,null,2)],{type:'application/json;charset=utf-8'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'diego_ultra_v14_banco.json';
+  a.download = 'diego_smart_study_v23_banco.json';
   document.body.appendChild(a); a.click();
   setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000);
 }
@@ -1716,6 +1851,7 @@ function renderCurrentSimulado(){
       </div>
     </div>
   `;
+  window.scrollTo({top:0,behavior:'smooth'});
   area.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
@@ -1723,12 +1859,35 @@ function finishSimuladoProva(){
   const total = CURRENT.queue.length;
   if(!total) return;
   let correct = 0;
+  const now = Date.now();
   const rows = CURRENT.queue.map((item,idx)=>{
     const marked = CURRENT.simAnswers ? CURRENT.simAnswers[String(idx)] : undefined;
     const ok = Number(marked) === Number(item.q.ans);
     if(ok) correct++;
+    STATE.stats.total += 1;
+    if(ok) STATE.stats.correct += 1;
+    STATE.history.push({id:item.id, ok, ts:now + idx, mat:item.mod.mat, topico:item.mod.topico, sub:item.mod.sub, spent:0, source:'simulado'});
+    const wrongMeta = STATE.wrongMap[item.id] || {errors:0, streak:0, question:item.q.q, mat:item.mod.mat, topico:item.mod.topico, sub:item.mod.sub};
+    if(ok){
+      wrongMeta.streak = (wrongMeta.streak || 0) + 1;
+      if(wrongMeta.errors > 0){
+        if(wrongMeta.streak >= 3) delete STATE.wrongMap[item.id];
+        else STATE.wrongMap[item.id] = wrongMeta;
+      }
+    }else{
+      wrongMeta.errors = (wrongMeta.errors || 0) + 1;
+      wrongMeta.streak = 0;
+      wrongMeta.lastErrorTs = now + idx;
+      STATE.wrongMap[item.id] = wrongMeta;
+    }
     return {idx, item, marked, ok};
   });
+  if(STATE.history.length > 5000) STATE.history = STATE.history.slice(-5000);
+  persist();
+  updateTopSummary();
+  renderDashboard();
+  renderWrongList();
+
   const wrong = total - correct;
   const acc = total ? Math.round((correct/total)*100) : 0;
   const area = document.getElementById('simuladoArea');
@@ -1736,32 +1895,26 @@ function finishSimuladoProva(){
     <div class="card session-card">
       <div class="section-title">Resultado do simulado</div>
       <h2 class="headline">Correção final</h2>
-      <div class="subtext">Agora sim: gabarito, seus marcados e desempenho geral.</div>
+      <div class="subtext">Agora sim: gabarito, seus marcados e desempenho geral. O simulado também alimenta seu radar de aprovação.</div>
       <div class="result-grid">
         <div class="result-box"><b>${correct}</b><span>Acertos</span></div>
         <div class="result-box"><b>${wrong}</b><span>Erros</span></div>
         <div class="result-box"><b>${acc}%</b><span>Aproveitamento</span></div>
       </div>
     </div>
-    <div class="list" style="margin-top:16px">
-      ${rows.map(r=>`
-        <div class="sim-result-item ${r.ok?'ok':'bad'}">
-          <b>Questão ${r.idx+1}</b><br>
-          ${fmt(r.item.q.q)}<br><br>
-          Você marcou: <b>${r.marked===undefined ? 'em branco' : String.fromCharCode(65+Number(r.marked))}</b> · 
-          Correta: <b>${String.fromCharCode(65+Number(r.item.q.ans))}</b>
-        </div>
-      `).join('')}
-    </div>
   `;
   renderSimuladoReview(rows);
   clearCheckpoint(true);
 }
 
+
 function generateQuestionPrompt(){
   const get = id => (document.getElementById(id)?.value || '').trim();
   const qtd = get('promptQtd') || '30';
-  const prompt = `Crie ${qtd} questões inéditas em JSON para concurso público.
+  const fence = "```";
+  const prompt = `Você é um gerador profissional de questões para concursos públicos.
+
+Crie ${qtd} questões inéditas em JSON para uso no sistema Diego Smart Study.
 
 Concurso: ${get('promptConcurso')}
 Banca: ${get('promptBanca')}
@@ -1774,19 +1927,26 @@ Nível: ${get('promptNivel')}
 Considere também o seguinte texto de edital, prova ou observação (se houver):
 ${get('promptBase') || '(não informado)'}
 
-Retorne apenas JSON no formato abaixo:
+IMPORTANTE:
+- Responda APENAS com um bloco de código JSON válido.
+- Nenhum texto antes do bloco.
+- Nenhum texto depois do bloco.
+- Não escreva introdução, observações, comentários ou avisos.
+- O bloco deve começar com ${fence}json e terminar com ${fence}.
+- Se a resposta não estiver em JSON válido, descarte e reescreva.
 
+FORMATO OBRIGATÓRIO:
 [
   {
     "mat": "",
     "topico": "",
     "sub": "",
-    "mapaMental": "Mapa mental bonito, coerente e hierárquico do assunto.",
-    "macete": "Macete simples para lembrar do conteúdo.",
+    "mapaMental": "Mapa mental bonito, coerente, hierárquico e visual do assunto.",
+    "macete": "Macete geral do assunto.",
     "questoes": [
       {
-        "q": "",
-        "textoLongo": "",
+        "q": "Enunciado da questão.",
+        "textoLongo": "Texto de apoio apenas se realmente necessário.",
         "opts": ["", "", "", ""],
         "ans": 0,
         "expl": "Explicação detalhada e coerente exatamente com o tema da questão.",
@@ -1799,24 +1959,29 @@ Retorne apenas JSON no formato abaixo:
   }
 ]
 
-REGRAS IMPORTANTES:
-- estilo prova de concurso
-- 4 alternativas
-- apenas 1 correta
-- cada questão deve ser autoconsistente
-- enunciado, alternativas, resposta correta, explicação, texto de apoio e macete devem falar do MESMO tema
-- se a questão for sobre modelo OSI, a explicação e o texto de apoio devem falar de modelo OSI
-- nunca misturar assuntos diferentes na explicação
-- usar textoLongo apenas quando realmente necessário
-- se houver textoLongo, ele deve ajudar a resolver a própria questão
-- explicar por que a correta está certa e por que a marcação errada induz ao erro, quando fizer sentido
-- gerar mapaMental coerente e bonito com o assunto
-- não criar bloco de aula separado
-- usar o campo aula apenas como resumo explicativo curto da questão
-- linguagem objetiva, clara e precisa
-- se houver qualquer conflito entre questão e explicação, reescreva a questão
+REGRAS DE QUALIDADE:
+- Estilo prova de concurso.
+- 4 alternativas.
+- Apenas 1 correta.
+- Cada questão deve ser totalmente autoconsistente.
+- Enunciado, alternativas, resposta correta, explicação, texto de apoio, pegadinha, aula e macete devem falar do MESMO tema.
+- Revise internamente consistência lógica antes de responder.
+- Se a questão for sobre Modelo OSI, a explicação e o texto de apoio devem falar de Modelo OSI.
+- Nunca misture assuntos diferentes.
+- Use textoLongo somente quando realmente necessário.
+- Se houver textoLongo, ele deve ajudar a resolver a própria questão.
+- A explicação deve mostrar por que a correta está certa.
+- Quando fizer sentido, a explicação também deve mostrar por que a errada induz ao erro.
+- Gere mapaMental coerente e útil para revisão rápida.
+- Não criar bloco de aula separado.
+- Use o campo aula apenas como resumo explicativo curto da questão.
+- Se houver qualquer conflito entre enunciado e explicação, reescreva a questão.
+- Priorize precisão, coerência e utilidade prática.
 
-Garanta precisão máxima e coerência total em cada item.`;
+SAÍDA FINAL:
+- Apenas 1 bloco de código JSON válido.
+- Nenhum texto fora do bloco.
+- Se a saída não estiver em JSON válido, reescreva antes de responder.`;
   const out = document.getElementById('promptOutput');
   if(out) out.value = prompt;
   toast('Prompt gerado.');
@@ -1826,7 +1991,11 @@ function copyQuestionPrompt(){
   const out = document.getElementById('promptOutput');
   if(!out || !out.value.trim()) generateQuestionPrompt();
   const value = document.getElementById('promptOutput').value;
-  navigator.clipboard.writeText(value).then(()=>toast('Prompt copiado.'));
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(value).then(()=>toast('Prompt copiado.')).catch(()=>prompt('Copie manualmente:', value));
+  } else {
+    prompt('Copie manualmente:', value);
+  }
 }
 
 function openChatGPTPrompt(){
@@ -1890,35 +2059,37 @@ document.addEventListener('DOMContentLoaded', init);
 function renderSimuladoReview(results){
   const box = document.getElementById('simuladoArea');
   if(!box) return;
-  const wrong = results.filter(r=>!r.ok);
-  const htmlReview = wrong.map(r=>{
+  const htmlReview = results.map(r=>{
     const markLabel = r.marked===undefined ? 'em branco' : String.fromCharCode(65 + Number(r.marked));
+    const correctLabel = String.fromCharCode(65 + r.item.q.ans);
+    const chosenText = r.marked===undefined ? 'em branco' : (r.item.q.opts?.[Number(r.marked)] || '');
+    const trapWords = detectTrapWords(`${r.item.q.q||''} ${chosenText||''}`);
     return `
-    <div class="list-card">
-      <h4>Questão ${r.idx+1}</h4>
+    <div class="list-card" style="margin-top:12px">
+      <h4>Questão ${r.idx+1} • ${r.ok ? 'acerto' : 'erro'}</h4>
       <div class="small">${fmt(r.item.q.q)}</div>
+      ${r.item.q.textoLongo ? `<div class="support-box" style="margin-top:10px"><b>Texto de apoio:</b><br>${fmt(r.item.q.textoLongo)}</div>` : ''}
       <div class="row" style="margin-top:10px">
-        <div class="pill bad">Você marcou: ${markLabel}</div>
-        <div class="pill ok">Correta: ${String.fromCharCode(65 + r.item.q.ans)}</div>
+        <div class="pill ${r.ok?'ok':'bad'}">Marcada: ${markLabel}</div>
+        <div class="pill ok">Correta: ${correctLabel}</div>
       </div>
+      ${trapWords.length || r.item.q.pegadinha ? `<div class="trap-box" style="margin-top:10px"><b>Caça-pegadinha:</b> ${r.item.q.pegadinha ? fmt(r.item.q.pegadinha) : 'Atenção às palavras ' + trapWords.map(t=>`<b>${esc(t)}</b>`).join(', ') + '.'}</div>` : ''}
       <div class="review-grid" style="margin-top:10px">
         ${r.item.q.expl ? `<div class="review-card explain"><h4>Explicação</h4>${fmt(r.item.q.expl)}</div>` : ''}
+        ${(r.item.q.macete || r.item.mod.macete) ? `<div class="review-card memo"><h4>Macete</h4>${fmt(r.item.q.macete || r.item.mod.macete)}</div>` : ''}
         ${r.item.q.pro ? `<div class="review-card pro"><h4>Como a banca cobra</h4>${fmt(r.item.q.pro)}</div>` : ''}
         ${r.item.q.pegadinha ? `<div class="review-card warn"><h4>Pegadinha</h4>${fmt(r.item.q.pegadinha)}</div>` : ''}
-        ${(r.item.q.macete || r.item.mod.macete) ? `<div class="review-card memo"><h4>Macete</h4>${fmt(r.item.q.macete || r.item.mod.macete)}</div>` : ''}
       </div>
     </div>`;
   }).join('');
 
-  if(wrong.length){
-    box.innerHTML += `
-      <div class="card" style="margin-top:20px">
-        <div class="section-title">Revisão dos erros</div>
-        <div class="subtext">Aqui está o porquê de cada erro, a lógica correta e como a banca costuma cobrar.</div>
-        ${htmlReview}
-      </div>
-    `;
-  }
+  box.innerHTML += `
+    <div class="card" style="margin-top:20px">
+      <div class="section-title">Revisão completa</div>
+      <div class="subtext">Confira alternativa marcada, correta, explicação, macete, pegadinha e como a banca cobra em cada item.</div>
+      ${htmlReview}
+    </div>
+  `;
 }
 
 </script>
