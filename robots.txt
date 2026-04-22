@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bfracoes.com.br/sitemap.xml
